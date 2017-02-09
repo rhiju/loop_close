@@ -11,5 +11,5 @@
 -output_score_file none
 -lores_scorefxn none.wts
 -save_jump_histogram
--jump_histogram_boxsize 80.000000
--jump_histogram_binwidth 8.000000
+-jump_histogram_boxsize 5.000000
+-jump_histogram_binwidth 0.500000

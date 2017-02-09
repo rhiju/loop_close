@@ -1,2 +1,2 @@
-rna_denovo @flags -sequence gaaaaaag -output_jump_res 1 8 -secstruct_legacy HLLLLLLH -output_histogram_file HISTOGRAM.bin.gz
-rna_denovo @flags -sequence gaaaaaag -output_jump_res 1 8 -secstruct_legacy HLLLLLLH -lores_scorefxn bias.wts -target_xyz 0 0 0 -out:file:silent bias_0_0_0/default.out -output_histogram_file bias_0_0_0/HISTOGRAM.bin.gz
+rna_denovo @flags -sequence gaaaaaaaag -output_jump_res 1 10 -secstruct_legacy HLLLLLLLLH -output_histogram_file HISTOGRAM.bin.gz
+rna_denovo @flags -sequence gaaaaaaaag -output_jump_res 1 10 -secstruct_legacy HLLLLLLLLH -lores_scorefxn bias.wts -target_xyz 0 0 0 -out:file:silent bias_0_0_0/default.out -output_histogram_file bias_0_0_0/HISTOGRAM.bin.gz
