@@ -58,7 +58,7 @@ xax = [min(xg)+0.5*xbinwidth/Nv ...
 
 clim = [ min( Tplot( ~isinf(Tplot) ) ) max( Tplot( ~isinf(Tplot) ) )];
 fprintf( 'Min & max potential: %f %f\n', clim(1), clim(2) );
-imagesc( xax, xax, imagex, clim );
+imagesc( xax, xax, imagex', clim );
 hold on;
 plot( 0, 0, 'kx' ); % mark origin
 rotbinmax = T.json.maxval(4);
