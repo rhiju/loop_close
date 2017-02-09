@@ -28,4 +28,5 @@ T = run_wham( h, bias_strength, bias_xyz, json_info );
 figure(4);
 E = derive_potential( T );
 title( 'Derived 6D potential (projection at z=0, vz=0)' )
+expfig( 'proj4d_potential.pdf' );
 

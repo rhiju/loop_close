@@ -72,6 +72,25 @@ for i = 1:length(bins)
      rectangle('Position',[xcirc,ycirc,xbinwidth*(180.0/rotbinmax),xbinwidth*(180.0/rotbinmax)],'Curvature',[1 1],'EdgeColor','k');
     end
 end
+% let's also show vx,vy axes
+i = 1; j = 1; 
+xp0 = xg(i)+xbinwidth/2;
+yp0 = xg(j)+xbinwidth/2;
+xp = xg(i)+xbinwidth/2;
+yp = xg(j)+xbinwidth/2-(xbinwidth/2)*(180.0/rotbinmax);
+text( xp, yp,'\pi','VerticalAlignment','middle','HorizontalAlignment','left','Color','w');
+plot( [xp0 xp],[yp0 yp], 'w-' );
+xp = xg(i)+xbinwidth/2+(xbinwidth/2)*(180.0/rotbinmax);
+yp = xg(j)+xbinwidth/2;
+text( xp, yp,'\pi','HorizontalAlignment','center','VerticalAlignment','bottom','Color','w');
+plot( [xp0 xp],[yp0 yp], 'w-' );
+xp = xg(i)+xbinwidth/2;
+yp = xg(j)+xbinwidth/2-(1/2)*(xbinwidth/2)*(180.0/rotbinmax);
+text( xp, yp,'v_y','VerticalAlignment','middle','HorizontalAlignment','right','Color','w');
+xp = xg(i)+xbinwidth/2+(1/2)*(xbinwidth/2)*(180.0/rotbinmax);
+yp = xg(j)+xbinwidth/2;
+text( xp, yp,'v_x','HorizontalAlignment','center','VerticalAlignment','top','Color','w');
+
 hold off;
 xt = interp1( 1:h_size(1), xbins, bins);
 set(gca,'xtick',xt,'ytick',xt);
@@ -84,3 +103,5 @@ else
     c.Label.String = 'E';
 end
 colormap( jet )
+set(gcf, 'PaperPositionMode','auto','color','white');
+

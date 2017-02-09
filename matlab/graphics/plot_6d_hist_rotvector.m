@@ -1,8 +1,9 @@
-function plot_6d_hist_rotvector( T, xyzval )
+function plot_6d_hist_rotvector( T, xyzval, N_contours )
 % T = 6D tensor output by RNA_FragmentMonteCarlo,
 %      as read into MATLAB with read_tensor.
 % xyzval = x,y,z position from which to draw rotation vector distributions
 %
+if ~exist( 'N_contours','var' ) N_contours = 2; end;
 h = T.tensor;
 h_size = size( h );
 assert( length( h_size ) == 6 ); % better be 6D tensor
@@ -45,8 +46,10 @@ fprintf( 'Effective molarity (at most favored rotation): %f M\n', max(Cr(:)) );
 
 % draw it -- note the permute is to ensure x and y aren't MATLAB-flipped.
 hold on
-contours = [ 20.0, 2 ]; alpha = [0.2, 0.1]; colors = {'black','blue'};
-for i = 1:length( contours )
+contours = [ 20.0, 0.2, 2e-2, 2e-3, 2e-4, 2e-5 ]; 
+alpha    = [ 0.5, 0.3, 0.1, 0.05, 0.02, 0.02, 0.02]; 
+colors = {'black','blue','cyan','green','yellow',[1 0.5 0],'red'};
+for i = 1:min( N_contours, length( contours ) )
     p = patch( isosurface(VX,VY,VZ,permute(Cr,[2,1,3]),contours(i)) );
     p.FaceColor = colors{i}; p.EdgeColor = 'none'; p.FaceAlpha = alpha(i);
     hold on

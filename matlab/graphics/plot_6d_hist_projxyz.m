@@ -15,7 +15,7 @@ C = h_trans/prod(T.json.binwidth(1:3))/(6.022e23)/1e-27;
 
 % draw it -- note the permute is to ensure x and y aren't MATLAB-flipped.
 contours = [ 2.0, 0.2, 2e-2, 2e-3, 2e-4, 2e-5, 2e-6 ]; 
-alpha    = [ 0.2, 0.1, 0.05, 0.02, 0.02, 0.02, 0.02]; 
+alpha    = [ 0.5, 0.3, 0.1, 0.05, 0.02, 0.02, 0.02]; 
 colors = {'black','blue','cyan','green','yellow',[1 0.5 0],'red'};
 for i = 1:min( N_contours, length( contours ) )
     p = patch( isosurface(X,Y,Z,permute(C,[2,1,3]),contours(i)) );
