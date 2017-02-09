@@ -10,7 +10,7 @@ h_trans = h_trans/ sum( h_trans(:) );
 xbins = [T.json.minval(1) : T.json.binwidth(1) : T.json.maxval(1) ];
 ybins = [T.json.minval(2) : T.json.binwidth(2) : T.json.maxval(2) ];
 zbins = [T.json.minval(3) : T.json.binwidth(3) : T.json.maxval(3) ];
-[X,Y,Z] = meshgrid( xbins, ybins, zbins );
+[X,Y,Z] = ndgrid( xbins, ybins, zbins );
 C = h_trans/prod(T.json.binwidth(1:3))/(6.022e23)/1e-27;
 
 % draw it -- note the permute is to ensure x and y aren't MATLAB-flipped.

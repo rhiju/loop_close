@@ -26,7 +26,7 @@ fprintf( 'Effective molarity (averaged over rotations) at (%f,%f,%f) is: %f M\n'
 vxbins = [T.json.minval(4) : T.json.binwidth(4) : T.json.maxval(4) ];
 vybins = [T.json.minval(5) : T.json.binwidth(5) : T.json.maxval(5) ];
 vzbins = [T.json.minval(6) : T.json.binwidth(6) : T.json.maxval(6) ];
-[VX,VY,VZ] = meshgrid( vxbins, vybins, vzbins );
+[VX,VY,VZ] = ndgrid( vxbins, vybins, vzbins );
 
 % if we convert to radians, we can compare to uniform distribution that
 % would form at 1 M. In rotation coordinates, would expect 

@@ -28,7 +28,7 @@ c = reshape( hxyz, [prod(h_size(1:3)), Nexpt] );
 xbins = [json.minval(1) : json.binwidth(1) : json.maxval(1) ];
 ybins = [json.minval(2) : json.binwidth(2) : json.maxval(2) ];
 zbins = [json.minval(3) : json.binwidth(3) : json.maxval(3) ];
-[X,Y,Z] = meshgrid( xbins, ybins, zbins );
+[X,Y,Z] = ndgrid( xbins, ybins, zbins );
 for i = 1:Nexpt
     wxyz(:,:,:,i) = exp( -bias_strength( i ) * ...
         ( (X - bias_xyz(1,i)).^2 + ...

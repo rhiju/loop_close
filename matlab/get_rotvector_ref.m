@@ -88,7 +88,7 @@ Vy = Vx;
 Vz = Vx;
 assert( length( Vx ) == nbins * nsub );
 
-[VX,VY,VZ] = meshgrid( Vx, Vy, Vz );
+[VX,VY,VZ] = ndgrid( Vx, Vy, Vz );
 V = sqrt( VX.^2 + VY.^2 + VZ.^2 );
 
 % in MATLAB, sinc(x) = sin(x*pi)/(x*pi)

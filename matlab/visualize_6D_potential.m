@@ -18,7 +18,7 @@ xbins = [T.json.minval(1) : xbinwidth : T.json.maxval(1) ];
 
 if ~exist( 'boxsize','var' ) | boxsize == 0 | isempty( boxsize)
     % figure out longest distance from origin at which there are counts. 
-    [X,Y,Z] = meshgrid( xbins, xbins, xbins );
+    [X,Y,Z] = ndgrid( xbins, xbins, xbins );
     R = sqrt( X.^2 + Y.^2 + Z.^2 );
     if apply_neg_log; P = T.tensor; else; P = exp( -T.tensor ); end;
     P( isnan( P ) ) = 0.0;
