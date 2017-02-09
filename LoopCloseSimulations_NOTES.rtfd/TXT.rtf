@@ -1,0 +1,485 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf810
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red0\green0\blue255;
+}
+{\*\expandedcolortbl;;\csgray\c0;\csgray\c100000;\csgenericrgb\c0\c0\c100000;
+}
+\margl1440\margr1440\vieww18600\viewh18400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \ulc2 \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/gag\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-01-17 at 2.42.16 PM.png \width6460 \height5520
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+Created -output_jump_res function. Simulate & record centroids & euler angles:\
+{{\NeXTGraphic Screen Shot 2017-01-17 at 2.43.23 PM.png \width8920 \height7540
+}¬}\
+Maximum density 312 (C=6.476254 M) at 4.000000,2.000000,6.000000\
+But this effective molarity does not include orientational preference.\
+\
+Plot theta<90 in blue, theta>90 in red:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 3.44.40 PM.png \width9540 \height7680
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+Orientation matters. Need to keep track of beta, minimally! \
+Conformations that retain base-norma direction have strong maximum at conformation with double stack.\
+Conformations with base \'91flipped\'92 to point down are also below z.\
+Some euler angle plots \'97 of most dense point (double stacked conformation) \'96 note maxima at beta, and sum fixed value of alpha+gamma.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 3.40.50 PM.png \width7460 \height7380
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Less Euler angle structure in other regions, e.g., low z; but note that there is some and its nontrivial:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 3.45.51 PM.png \width7280 \height8060
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul Sanity check\ulnone : gag_fragsize3 \'97 enforce correlations across residues (mostly helices probably):\
+Maximum density 1024 (C=21.255397 M) at 4.000000,2.000000,6.000000\
+Great!\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 3.59.39 PM.png \width9140 \height7200
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+Similar plots for uuu\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 3.49.49 PM.png \width8740 \height7460
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+For uuuuuu, more fuzzed out, as expected. But there\'92s still a maximum (need a bigger box size to get enough points to check euler angles):\
+Note: had to increase bin size from 2 to 8 to get enough points to show euler angles.\
+\
+plot_xyz_hist( 'uuuuuu.SCORES.txt',40,8 );\
+Maximum density 395 (C=0.128111 M) at 0.000000,8.000000,16.000000\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 3.50.46 PM.png \width8540 \height7660
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 3.50.52 PM.png \width7300 \height7840
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 3.51.03 PM.png \width7480 \height7860
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 3.56.14 PM.png \width8480 \height7780
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Interestingly, forcing frag_size=3 here does not make Ceff that much bigger:\
+Maximum density 432 (C=0.140111 M) at 0.000000,8.000000,16.000000\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 4.12.32 PM.png \width8800 \height7540
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Simple umbrella sampling (e.g., 10x10x10 bins, remove exp(E/kT) weight) could allow for computation of full 6D function with reasonable statistics (might need to \'91backfill\'92 with 1.0 & smooth to avoid cutoff issues).\
+\
+\
+Go back to gag \'97 now enforce different secstruct_legacy:\
+HHH (sharper)\
+Maximum density 888 (C=18.432414 M) at 4.000000,2.000000,6.000000\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 4.42.17 PM.png \width6960 \height5520
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+HNH \
+Maximum density 231 (C=4.794919 M) at 4.000000,2.000000,6.000000\
+Zoomed in (on right) \'97 can\'92t really make out an additional peak for direct stacking. Might be good.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 4.42.26 PM.png \width6420 \height5460
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 4.42.53 PM.png \width5900 \height5940
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+LLL (more diffuse!)\
+Maximum density 79 (C=1.639821 M) at 2.000000,2.000000,6.000000\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 4.43.10 PM.png \width6460 \height5300
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Actually what I probably want to use is HLH (i.e. require top and bottom have anti chi+north pucker):\
+Maximum density 293 (C=6.081866 M) at 4.000000,2.000000,6.000000\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 5.01.07 PM.png \width6280 \height5660
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 5.03.56 PM.png \width5300 \height5240
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+The red/blue switch is some MATLAB thing about which points to show on top.\
+Back of the envelope calc for rotational concentration\
+(8*pi^2) / ( 0.1 * ( 20*pi/180) * (200*pi/180) ) = 648\
+So C_eff = 6.081866  * 648 = 
+\b 4000 M
+\b0 .  (at double-stacked location \'97 the maximum!)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/gaag_HLLH\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \ulnone Maximum density 44 (C=0.913318 M) at 0.000000,4.000000,10.000000\
+with 4 A bin width\
+Maximum density 214 (C=0.555256 M) at 0.000000,4.000000,8.000000\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-01-17 at 4.59.13 PM.png \width6320 \height5320
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 5.08.06 PM.png \width5880 \height5140
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Eyeballing rotational restriction to be 40\'b0, 200 \'b0, 0.2 in cos beta:\
+(8*pi^2) / ( 0.2 * ( 40*pi/180) * (200*pi/180) ) = 162\
+162 * 0.55 = 
+\b 89.1 M
+\b0 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/uuuuuu_HLLLLH
+\f1\fs24 \cf0 \cb1 \ulc0 \CocoaLigature1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone Maximum density 264 (C=0.085624 M) at 0.000000,0.000000,16.000000\
+Note total loss of rotational restriction!\
+Down to 
+\b 0.09 M
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 5.09.40 PM.png \width6480 \height5260
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 5.09.43 PM.png \width5700 \height6240
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \ulc2 \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/gaaaag_HLLLLH\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \ulnone Maximum density 217 (C=0.070380 M) at 8.000000,0.000000,8.000000\
+[Very similar to uuuuuu!]\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-01-17 at 5.13.05 PM.png \width6360 \height5220
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 5.09.43 PM.png \width5700 \height6240
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/gaaag_HLLLH\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 And last in the series:\
+Maximum density 386 (C=0.125192 M) at 0.000000,0.000000,16.000000\
+Rotational restriction ~ \
+(8*pi^2)/(0.25*0.5*(2*pi)*(2*pi)) = 16\
+So 
+\b 2 M
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 5.22.43 PM.png \width6000 \height5500
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-17 at 5.22.45 PM.png \width5760 \height6300
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/base_centroid/gg_HH\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \ulnone The other extreme:\
+Maximum density 2479 (C=51.457157 M) at 2.000000,0.000000,4.000000\
+Rotational restriction: 8*pi^2/ ( 0.1 * (20 * pi/180) * ( 180*sqrt(2) * pi/180) )  =  509.1169\
+So C_eff = 2600 M\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-01-18 at 9.41.50 AM.png \width6200 \height5320
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-18 at 9.41.43 AM.png \width5720 \height6280
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul C_eff [max]  #intervening nts__(x,y,z)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone 2600 M          0                           (2,0,4)\
+4000 M	1                           (4,2,6)\
+   90 M	2                           (0,4,8)\
+    2 M		3                           (0,0,16) [shallow]\
+    0.1 M	4                           (0,0,16) [shallow]\
+Drop of ~40x for each of the first few nts. Then 20x [no rotation left to lose].\
+That\'92s at *maximum density point*.\
+\
+How about at (2,0,4), i.e. point of direct stacking?\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul C[transl]      Rot restrict  C_eff         # intervening nts\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone 51.45716 M     509             2600 M    0\
+0.290601 M     509               147 M    1\
+0.124543 M       63                7.8 M    2\
+0.109300 M     2-4               0.32 M    3\
+0.068758 M        2               0.13 M    4\
+\
+Very interesting \'97 barely any change to C[transl] (expected from Gaussian chain?)\
+But rotational restriction does drop off dramatically between 1 and 3.\
+~20-fold drops with each nucleotide \'97> 1.8 kcal/mol worse with each nucleotide!?\
+\
+Maybe the necessary rotation in a single-nt bulge (or double-nt, etc.) is *not* the preferred rotation.\
+look at alpha+gamma = 40\'b0, cos(beta) = 1.0  [based on gg_HH]:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-18 at 10.07.31 AM.png \width5860 \height5760
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Look now at gag_HLH \'96 yea, its off center.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-18 at 10.10.44 AM.png \width5740 \height5820
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Assume reduction by ~10x \'97> 10 M effective molarity.\
+NN rule would be +4.09 kcal/mol (init G-C at 1 M)   - 0.616 kcal/mol log(10 M / 1 M) = 2.67 kcal/mol.\
+Sounds about right!\
+\
+Note recurring factor of ~0.1-0.3 M (translational) * 2-20 (rotational restriction)  =  0.2-6 M ~ 1 M, within 5-fold [i.e, \'b11 kcal/mol]. \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul Set by dimensions of problem\ulnone  and assumption that bulge conformation is not compatible with perfect A-form.\
+Picture unifies: init, bulge. Probably also apical loops (trilooop, tetraloop, etc.).\
+Check: prior loop entropy papers \'97 yes, Zhang et al. (2008) show -deltaS ~ 8 k_B for hairpin, bulge, and internal. So T deltaS = 4.9 kcal/mol. Maybe not such a big thing.\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/o3p_to_o5p/gg_HH\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 Shifting frames \'97 probably makes more sense to have \'91takeoff\'92 to \'91landing\'92 transformation:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-18 at 10.49.48 AM.png \width7140 \height6280
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-18 at 10.48.52 AM.png \width7300 \height4140
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-18 at 10.49.03 AM.png \width5880 \height6180
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Good, passes sanity check with no intervening nucleotides!\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/o3p_to_o5p/gag_HLH\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 Single nt bulge:\
+Looks OK! And no pileup at  cos(beta)=1.0 \'97 hopefully no polarity issues.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-18 at 10.52.00 AM.png \width6500 \height5580
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-18 at 11.00.52 AM.png \width5900 \height5980
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul 20-24 January 2017\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone + I spent quite a bit of time thinking about alternative ways to store maps and to calculate derivs. Not much help online.\
++ Eventually, worked out analytical formulae if we store in \'91rotation vector\'92 space, i.e. 
+\b v
+\b0  = 
+\b axis
+\b0 *angle.\
+\
+Distributions look pretty reasonable in new view:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/check_rotations\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \CocoaLigature1 check_rotations_script.m\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone Using SpinCalc.m library, confirmed that uniform random rotations show up as uniform in alpha, cos(beta),gamma\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-24 at 3.59.05 PM.png \width7260 \height7180
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+and smooth in axis-angle\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-24 at 3.59.09 PM.png \width7440 \height6940
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+with probability density of (1/8pi^2) * sinc^2( v/2 ):\
+[sinc x = sinx/x]\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-24 at 4.01.38 PM.png \width9980 \height8000
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul check_derivs_script.m\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs20 \cf0 \ulnone \
+   F1 = dot(dEdv, V_norm ) * V_norm + \cf4 ...
+\fs24 \cf0 \
+
+\fs20         (V/2)*cot( V/2 )*( dEdv - dot(dEdv,V_norm)*V_norm ) \cf4 ...
+\fs24 \cf0 \
+
+\fs20         - (V/2)*cross(dEdv,V_norm);
+\fs24 \
+
+\f1 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone Check derivatives \'97 numerical does match analytical for a totally made up potential with the following isosurface (quartic+quadratic) in rotation vector space R(3):\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-24 at 3.54.19 PM.png \width7100 \height7300
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-01-24 at 3.54.15 PM.png \width8320 \height8140
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Note scatter plot samples over 20 different 
+\b v
+\b0  and then 10 different axes of perturbing rotation omega \'97 analogous to how F1/torque will be calculated in Rosetta. Some numerical issues (zeros) in numerical calculation and small interpolations, but oh well.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul 5 Feb, 2017\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone Getting ready for full computation\
+Will probably need umbrella sampling to ensure good definition of potential.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/create_potential/gag_HLH/bias_0_0_0\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 Check biasing near 0,0,0\
+E = [x^2 + y^2 + z^2]\
+[created new term 
+\i rna_stub_coord_hack
+\i0 ]\
+\
+In graphics, pretty clear that loop \'91comes back\'92 to origin.\
+Note x,y,z are very close to 0:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-05 at 1.58.43 PM.png \width8320 \height6640
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-05 at 1.58.59 PM.png \width7760 \height6700
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/create_potential/gag_HLH/bias_0_0_20\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 Again, simulation looked extended, and indeed:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-05 at 2.01.44 PM.png \width7000 \height7020
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-05 at 2.01.54 PM.png \width8200 \height7240
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Interesting how much fine structure there is in rotation \'97 KDE fit might not be so great unless we really want to smooth.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/create_potential/gag_HLH/bias_-10_0_0\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 This extends in the \'91favored\'92 direction:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-05 at 2.08.17 PM.png \width8780 \height5060
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-05 at 2.08.21 PM.png \width7720 \height6400
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/create_potential/gag_HLH/bias_10_0_0\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-02-05 at 2.11.53 PM.png \width8760 \height5260
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-05 at 2.11.58 PM.png \width7760 \height6400
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Pushed to maximal extension in one direction.\
+\
+check that we can also save histograms and that they make sense. Noticed that upon \'91reshape\'92 had to then transpose axes 1 & 2 (for x,y) and also 1 & 2 (for vx, vy) to get agreement.\
+\
+ some kind of convention in MATLAB? ah, yes, its the way things are plotted \'97 dimension 1 is always plotted down y, dimension 2 is plotted down x \'97 fixed up scripts.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-06 at 8.48.30 AM.png \width7400 \height5540
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-06 at 8.48.34 AM.png \width7100 \height6520
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+worked out WHAM (run_wham), and can now get information based on histograms, biasing potentials, etc.\
+\
+No-bias run for gag_HLH had points with maximum at (-8,0,0);\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-06 at 3.55.06 PM.png \width5020 \height3820
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+After WHAM, get same thing (checked comparison to direct read in of unbiased histogram, too!):\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-06 at 4.15.18 PM.png \width4880 \height3540
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-06 at 4.15.14 PM.png \width7100 \height5260
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Yay, now do big runs? wait, let\'92s see if we can handle binary i/o.\
+\
+OK, binary i/o is now default, and no extra permutations in plotting.\
+\
+WHAM works too \'97 visualize x,y,vx,vy potential for loop_03  [gag]:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 Unbiased single run:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-07 at 3.45.32 PM.png \width10340 \height8580
+}¬}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 After wham:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-07 at 3.45.25 PM.png \width10580 \height8900
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Not yet dividing by 1 M \'91reference potential\'92.
+\f0\fs22 \cf2 \cb3 \ul \ulc2 \CocoaLigature0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 \
+}

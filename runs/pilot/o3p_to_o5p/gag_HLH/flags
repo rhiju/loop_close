@@ -1,0 +1,10 @@
+-temperature 1.0
+-lores_scorefxn just_chainbreak.wts
+-close_loops false
+-minimize_rna false
+-no_filters
+-nstruct 10
+-farna:rounds 1
+-cycles 100000
+-output_score_frequency 100
+-dump

@@ -1,0 +1,2 @@
+rm loop03.out
+rna_denovo @flags

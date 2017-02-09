@@ -1,0 +1,1 @@
+rna_denovo @flags -sequence gaaag -out:file:silent gaaag.out -output_jump_res 1 6 -secstruct_legacy HLLLH

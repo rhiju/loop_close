@@ -1,0 +1,14 @@
+-temperature 1.0
+-lores_scorefxn bias.wts
+-close_loops false
+-minimize_rna false
+-no_filters
+-nstruct 1
+-farna:rounds 1
+-cycles 100000
+-output_jump_o3p_to_o5p
+-output_rotation_vector
+-output_score_frequency 10
+-target_xyz 10 0 0
+-save_jump_histogram
+

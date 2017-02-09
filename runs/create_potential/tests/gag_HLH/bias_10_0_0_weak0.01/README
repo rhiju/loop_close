@@ -1,0 +1,1 @@
+rna_denovo @flags -sequence gag -output_jump_res 1 3 -secstruct_legacy HLH -out:file:silent test.out #-output_histogram_file HISTOGRAM.txt

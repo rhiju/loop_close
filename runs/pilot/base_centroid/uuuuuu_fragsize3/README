@@ -1,0 +1,1 @@
+rna_denovo @flags -sequence uuuuuu -out:file:silent uuuuuu.out -output_jump_res 1 6 -frag_size 3

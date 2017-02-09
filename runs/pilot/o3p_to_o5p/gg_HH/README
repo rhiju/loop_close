@@ -1,0 +1,1 @@
+rna_denovo @flags -sequence gg -out:file:silent gg.out -output_jump_res 1 2 -secstruct_legacy HH -output_jump_o3p_to_o5p -dump
