@@ -5,20 +5,20 @@ import os
 
 parser = argparse.ArgumentParser(description='Run rna_helix to build a helix')
 parser.add_argument('-length', required=True, help='Length of helix', nargs='?', type=int )
-parser.add_argument('-points',default=[-10,10],help='points in x (y,z) for biasing',nargs='+',type=int )
+parser.add_argument('-points',default=[-10,10],help='points in x (y,z) for biasing',nargs='+',type=float )
 parser.add_argument('-boxsize',default=40.0,help='boxsize for +/-x,y,z',nargs='?',type=float )
 parser.add_argument('-binwidth',default=4.0,help='binwidth for x,y,z',nargs='?',type=float )
 parser.add_argument('-skip_no_bias',help='skip the no-bias run',action='store_true' )
 parser.add_argument('-append',help='append to README instead of overwriting',action='store_true' )
 args = parser.parse_args()
 
-assert( args.length >= 2 )
+assert( args.length >= 0 )
 sequence = 'g'
-for i in range( args.length-2 ): sequence += 'a'
+for i in range( args.length ): sequence += 'a'
 sequence += 'g'
 
 secstruct = 'H'
-for i in range( args.length-2 ): secstruct += 'L'
+for i in range( args.length ): secstruct += 'L'
 secstruct += 'H'
 
 outdir = 'loop_%02d/' % args.length
@@ -56,7 +56,7 @@ else:
     out = open( outdir+'README', 'w')
 
 # baseline command
-cmd_baseline = 'rna_denovo @flags -sequence %s -output_jump_res 1 %d -secstruct_legacy %s' % ( sequence,args.length,secstruct )
+cmd_baseline = 'rna_denovo @flags -sequence %s -output_jump_res 1 %d -secstruct_legacy %s' % ( sequence,args.length+2,secstruct )
 count = 0
 
 # no-bias command
