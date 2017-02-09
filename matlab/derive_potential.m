@@ -28,6 +28,7 @@ F(isnan(F)) = Inf; % Inf is a sign of missing data.
 
 E = T;
 E.tensor = F;
+E.json.type = class( F ); % double
 
 % let's pad by one extra bin in each of the rotation vector directions
 % this will allow me to ensure continuous interpolation upon traversing
@@ -52,6 +53,7 @@ E.tensor = F;
 json = E.json;
 json.minval( 4:6 ) = json.minval( 4:6 ) - json.binwidth( 4:6 );
 json.maxval( 4:6 ) = json.maxval( 4:6 ) + json.binwidth( 4:6 );
+json.n_bins = size( E.tensor );
 E.json = json;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -14,6 +14,18 @@ if (~strcmp(filename(end-3:end),'.bin') & ...
     fprintf( 'Filename should have .bin or .bin.gz as suffix\n');
     return;
 end
+% need to gunzip binary files
+if strcmp( filename(end-2:end), '.gz' )
+    filename = filename(1:end-3); % will gunzip in next block
+end
+if ~exist( filename, 'file' ); 
+    filename_gz =  [filename, '.gz' ];
+    if exist( filename_gz, 'file' )
+        fprintf( 'Gunzipping: %s\n', filename_gz );
+        gunzip( filename_gz ); 
+    end
+end
+
 json_file = strrep( strrep( filename, '.bin', '.json' ), '.gz', '' );
 if ~exist( json_file, 'file' ); 
     json_gz =  [json_file, '.gz' ];
@@ -27,19 +39,14 @@ json = loadjson( json_file );
 assert( isfield( json, 'n_bins' ) );
 assert( isfield( json, 'type' ) );
 
-% need to gunzip binary files
-if strcmp( filename(end-2:end), '.gz' )
-    filename = filename(1:end-3);
-    if ~exist( filename, 'file' )
-        gunzip( [filename,'.gz'] ); ls( filename );
-    end
-end
 fid = fopen( filename, 'r' );
 [X, n_data] = fread( fid, json.type );
 if ( prod( json.n_bins ) ~= n_data ) 
     fprintf( 'Mismatch between n_data %d and expected value based on product of n_bins %d\n', n_data, prod( json.n_bins) );
     return;
 end
+fclose( fid );
+
 % the ordering of MathNTensor output in Rosetta requires reshaping and
 % permuting to get into 'reasonable' order.
 Ndim = length( json.n_bins );
