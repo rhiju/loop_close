@@ -5,7 +5,7 @@
 }
 {\*\expandedcolortbl;;\csgray\c0;\csgray\c100000;\csgenericrgb\c0\c0\c100000;
 }
-\margl1440\margr1440\vieww18600\viewh18400\viewkind0
+\margl1440\margr1440\vieww18600\viewh16580\viewkind0
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
 \f0\fs22 \cf2 \cb3 \ul \ulc2 \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/gag\
@@ -467,19 +467,106 @@ OK, binary i/o is now default, and no extra permutations in plotting.\
 \
 WHAM works too \'97 visualize x,y,vx,vy potential for loop_03  [gag]:\
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 Unbiased single run:\
+Unbiased single run:\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic Screen Shot 2017-02-07 at 3.45.32 PM.png \width10340 \height8580
-}¬}\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 After wham:\
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+After wham:\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic Screen Shot 2017-02-07 at 3.45.25 PM.png \width10580 \height8900
 }¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \
-Not yet dividing by 1 M \'91reference potential\'92.
-\f0\fs22 \cf2 \cb3 \ul \ulc2 \CocoaLigature0 \
+Not yet dividing by 1 M \'91reference potential\'92.\
+Worked all that out, including filling zeros; repeating runs with finer bins, etc.:\
+\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf2 \
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-09 at 2.31.37 PM.png \width11960 \height11120
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-09 at 2.31.41 PM.png \width11600 \height11240
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+installed into Rosetta.\
+\
+tests of tensor + potential pi wraparound:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \CocoaLigature0 read_tensor:  21 21 21 13 13 13\
+read_tensor: 2.4974\
+read_tensor: 2.4974\
+read_tensor: \{"binwidth":[2,2,2,36,36,36],"maxval":[20,20,20,216,216,216],"minval":[-20,-20,-20,-216,-216,-216],"n_bins":[21,21,21,13,13,13],"type":"double"\}\
+read_tensor:  21 21 21 13 13 13\
+read_tensor: 2.4974\
+read_tensor: 2.4974\
+read_tensor: Checking  -6 0 0 -36 -36 -36\
+read_tensor: Value: 2.4974\
+read_tensor: Analytical deriv: 1.67441 -0.706683 -0.851675 -0.0166167 0.00463059 -0.0192754\
+read_tensor: Numerical  deriv: 1.67441 -0.706683 -0.851675 -0.0166167 0.00463059 -0.0192754\
+read_tensor: Rotation axis:     -0.5773502691896257     -0.5773502691896257     -0.5773502691896257\
+read_tensor: Not enforcing continuity at pi\
+read_tensor: evaluating 6D potential at rotation angle: 120 1.88589  rot_deriv     0.02331644494549000   -0.003427378965859922     0.01560091069585427\
+read_tensor: evaluating 6D potential at rotation angle: 130 1.69083  rot_deriv    0.003728286342912966     0.01904647925996227    0.002328687008175047\
+read_tensor: evaluating 6D potential at rotation angle: 140 1.60797  rot_deriv   -0.003025585507385624     0.01224289731486603   -0.005262343028186303\
+read_tensor: evaluating 6D potential at rotation angle: 150 1.64105  rot_deriv   -0.009066825533519045    0.006151947193934979    -0.01214074124038246\
+read_tensor: evaluating 6D potential at rotation angle: 160 1.77771  rot_deriv    -0.01439543373548742   0.0007736288971689747    -0.01830650762841358\
+read_tensor: evaluating 6D potential at rotation angle: 170 2.00561  rot_deriv    -0.01901141011329065   -0.003892057575431887    -0.02375964219227955\
+read_tensor: evaluating 6D potential at rotation angle: 180 2.31241  rot_deriv    -0.02291475466692877   -0.007845112223867653    -0.02850014493198043\
+read_tensor: evaluating 6D potential at rotation angle: -180 2.22591  rot_deriv    0.005930003565693384     0.01882939834322742   9.813049349947228E-05\
+read_tensor: evaluating 6D potential at rotation angle: -170 2.0324  rot_deriv     0.01480190507237750     0.02432761703552665    0.003040826294467953\
+read_tensor: evaluating 6D potential at rotation angle: -160 1.73903  rot_deriv     0.02366325483265343     0.02981528398141777    0.005972970349028370\
+read_tensor: evaluating 6D potential at rotation angle: -150 1.34598  rot_deriv     0.03251405284652157     0.03529239918090102    0.008894562657180865\
+read_tensor: evaluating 6D potential at rotation angle: -140 0.853423  rot_deriv     0.04135429911398160     0.04075896263397621     0.01180560321892532\
+read_tensor: evaluating 6D potential at rotation angle: -130 0.261555  rot_deriv     0.05018399363503366     0.04621497434064341     0.01470609203426179\
+read_tensor: evaluating 6D potential at rotation angle: -120 -0.125306  rot_deriv    -0.01905361999471715     0.03847742429696625   -0.009531249348622950\
+read_tensor: Enforcing continuity at pi\
+read_tensor: evaluating 6D potential at rotation angle: 120 1.88589  rot_deriv     0.02331644494549000   -0.003427378965859922     0.01560091069585427\
+read_tensor: evaluating 6D potential at rotation angle: 130 1.69083  rot_deriv    0.003728286342912966     0.01904647925996227    0.002328687008175047\
+read_tensor: evaluating 6D potential at rotation angle: 140 1.60797  rot_deriv   -0.003025585507385624     0.01224289731486603   -0.005262343028186303\
+read_tensor: evaluating 6D potential at rotation angle: 150 1.65454  rot_deriv   -0.008619285948323296    0.004938921550158364    -0.01117281030213456\
+read_tensor: evaluating 6D potential at rotation angle: 160 1.81227  rot_deriv    -0.01328252688419006   -0.003134230954111098    -0.01580836400389302\
+read_tensor: evaluating 6D potential at rotation angle: 170 2.07436  rot_deriv    -0.01814905941062195    -0.01215141599725959    -0.02065030117319475\
+read_tensor: evaluating 6D potential at rotation angle: 180 2.26916  rot_deriv   -0.008492375550617758    0.005492143059679836    -0.01420100721924051\
+read_tensor: evaluating 6D potential at rotation angle: -180 2.26916  rot_deriv   -0.008492375550617697    0.005492143059679877    -0.01420100721924049\
+read_tensor: evaluating 6D potential at rotation angle: -170 2.16706  rot_deriv     0.01808603936968679     0.02458533547203836     0.01891594653029583\
+read_tensor: evaluating 6D potential at rotation angle: -160 1.76864  rot_deriv     0.02354761157161434     0.02799006621170411     0.01441521877441092\
+read_tensor: evaluating 6D potential at rotation angle: -150 1.34888  rot_deriv     0.03167189144058391     0.03386646055364149     0.01156520787640131\
+read_tensor: evaluating 6D potential at rotation angle: -140 0.853423  rot_deriv     0.04135429911398160     0.04075896263397621     0.01180560321892532\
+read_tensor: evaluating 6D potential at rotation angle: -130 0.261555  rot_deriv     0.05018399363503366     0.04621497434064341     0.01470609203426179\
+read_tensor: evaluating 6D potential at rotation angle: -120 -0.125306  rot_deriv    -0.01905361999471715     0.03847742429696625   -0.009531249348622950\
+\
+derivs (including fa_atr, fa_rep):\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-02-14 at 5.46.50 PM.png \width12460 \height8880
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+stuff \'91off the line\'92 appears to move with numerical deltas, so likely related to derivative discontinuities in polylinear interpolation.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul /Users/rhiju/DropBox/projects/RNA/loop_close/runs/swm/P5b_connect\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone Test on P5b_connect\
+[Had to fix a bug]\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-16 at 10.15.12 AM.png \width12600 \height8860
+}¬}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \CocoaLigature0 But note that low energy models are still not connecting:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-02-16 at 10.22.55 AM.png \width5140 \height8020
+}¬}\
+One issue \'97 I forget to convert the reference state from 1 M to \'c5^-3, so currently loop_close is highly negative [\'967 per loop] Putting in the fix would change numbers by \
+\'96ln(6.022e23/1e27)  = +7.4.   So let\'92s fix that, and also include \'93loop_fixed_cost\'94 (estimate of ln( restricted_volume ), which is close to 0.0). That might favor closing chains, rather than leaving them open.\
+
+\f0\fs22 \cf2 \cb3 \CocoaLigature0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 \ul \
 }
