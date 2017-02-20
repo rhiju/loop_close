@@ -1,0 +1,12 @@
+-temperature 1.0
+-lores_scorefxn just_chainbreak.wts
+-close_loops false
+-minimize_rna false
+-no_filters
+-nstruct 10
+-farna:rounds 1
+-cycles 100000
+-output_jump_o3p_to_o5p
+-output_rotation_vector
+-output_score_frequency 100
+-save_jump_histogram

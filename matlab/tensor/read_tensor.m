@@ -9,43 +9,34 @@ function T = read_tensor( filename )
 % (C) Rhiju Das, Stanford University
 
 T.tensor = [];
-if (~strcmp(filename(end-3:end),'.bin') & ...
-    ~strcmp(filename(end-6:end),'.bin.gz') )
-    fprintf( 'Filename should have .bin or .bin.gz as suffix\n');
-    return;
-end
-% need to gunzip binary files
-if strcmp( filename(end-2:end), '.gz' )
-    filename = filename(1:end-3); % will gunzip in next block
-end
-if ~exist( filename, 'file' ); 
-    filename_gz =  [filename, '.gz' ];
-    if exist( filename_gz, 'file' )
-        fprintf( 'Gunzipping: %s\n', filename_gz );
-        gunzip( filename_gz ); 
-    end
-end
+[filename, json_file, is_gzip, use_binary ] = process_tensor_filename( filename );
 
-json_file = strrep( strrep( filename, '.bin', '.json' ), '.gz', '' );
-if ~exist( json_file, 'file' ); 
-    json_gz =  [json_file, '.gz' ];
-    if ~exist( json_gz, 'file' )
-        fprintf( 'Could not find JSON file with name like %s or %s.\n',json_file,json_gz );
-        return;
-    end
-    gunzip( [json_file, '.gz'] ); 
-end
+% MATLAB claims to be able to read ascii from .gz, but this doesn't seem to work:
+%if ( is_gzip & ~use_binary ) filename = [filename, '.gz' ]; end; 
+
+if ( ~check_exists_or_gunzip( filename ) ) return; end;
+if ( ~check_exists_or_gunzip( json_file ) ) return; end;
+
 json = loadjson( json_file );
 assert( isfield( json, 'n_bins' ) );
 assert( isfield( json, 'type' ) );
 
 fid = fopen( filename, 'r' );
-[X, n_data] = fread( fid, json.type );
-if ( prod( json.n_bins ) ~= n_data ) 
+if ( use_binary )
+    [X, n_data] = fread( fid, json.type );
+else
+    [X, n_data] = fscanf(fid, '%f');
+end
+if ( prod( json.n_bins ) ~= n_data )
     fprintf( 'Mismatch between n_data %d and expected value based on product of n_bins %d\n', n_data, prod( json.n_bins) );
     return;
 end
 fclose( fid );
+if is_gzip & exist( [filename,'.gz'], 'file' ) 
+    fprintf( 'Deleting (since there is a .gz version): %s\n\n', filename );
+    delete( filename );
+end
+
 
 % the ordering of MathNTensor output in Rosetta requires reshaping and
 % permuting to get into 'reasonable' order.
@@ -53,3 +44,19 @@ Ndim = length( json.n_bins );
 T.tensor = reshape( X, json.n_bins(Ndim:-1:1) );
 T.tensor = permute( T.tensor, [Ndim:-1:1] );
 T.json = json;
+
+return;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [success, did_gunzip] = check_exists_or_gunzip( filename )
+success = 1;
+if ~exist( filename, 'file' );
+    filename_gz =  [filename, '.gz' ];
+    if exist( filename_gz, 'file' )
+        fprintf( 'Gunzipping: %s\n', filename_gz );
+        gunzip( filename_gz );
+    else
+        fprintf( 'Could not find: %s or %s\n', filename, filename_gz );
+        success = 0;
+    end
+end

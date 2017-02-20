@@ -1,0 +1,68 @@
+
+Basic usage:  rna_denovo  -fasta <fasta file with sequence>  [ -native <native pdb file> ] 
+
+ Type -help for full slate of options.
+
+core.init: Rosetta version unknown:78617c39d4f742d3ca93a88f1ac3c6e828948b54 2017-02-09 12:52:08 -0800 from git@github.com:RosettaCommons/main.git
+core.init: command: rna_denovo @flags -constant_seed
+core.init: Constant seed mode, seed=1111111 seed_offset=0 real_seed=1111111
+core.init.random: RandomGenerator:init: Normal mode, seed=1111111 RG_type=mt19937
+core.init: Resolved executable path: /Users/rhiju/src/rosetta//main/source/bin/rna_denovo
+core.init: Looking for database based on location of executable: /Users/rhiju/src/rosetta//main/database/
+protocols.farna.options.RNA_DeNovoProtocolOptions: Setting silent file name based on directory: classic.out
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 544 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 0.544479 seconds.
+protocols.farna.setup.RNA_DeNovoSetup: Sequence:            gg
+protocols.farna.setup.RNA_DeNovoSetup: Secstruct:           ..
+protocols.farna.setup.RNA_DeNovoSetup: Secstruct [legacy]: HH
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/hbonds/sp2_elec_params/HBPoly1D.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/sp2_elec_params/HBFadeIntervals.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/sp2_elec_params/HBEval.csv
+basic.io.database: Database file opened: scoring/score_functions/carbon_hbond/ch_o_bond_potential.dat
+protocols.farna.setup.RNA_DeNovoPoseInitializer: Setting desired secondary structure to: HH
+protocols.farna.fragments.FullAtomRNA_Fragments: Reading in vall_torsions file: /Users/rhiju/src/rosetta//main/database/sampling/rna/RICHARDSON_RNA09.torsions
+protocols.farna.fragments.FullAtomRNA_Fragments: Lines read from vall_torsions file: 24459
+protocols.farna.RNA_FragmentMonteCarlo: Using user-defined 1000 cycles in de novo modeling.
+protocols.farna.RNA_FragmentMonteCarlo: Heating up... 9 cycles.
+protocols.farna.fragments.FullAtomRNA_Fragments: Picked Fragment Library for sequence g  and sec. struct H ... found 5473 potential fragments
+protocols.moves.RigidBodyMover: Randomize: Jump (before): RT 0.851575 0.182234 0.491539 0.197542 -0.980067 0.021116 0.485589 0.0791179 -0.870599 -0.323732 2.67519 6.11914  
+protocols.moves.RigidBodyMover: Randomize: Rot. Center (before): 2.40558 -1.43069 -6.70396
+protocols.geometry.RB_geometry: random_reorientation_matrix phi: 18.1153 psi: 296.367 theta: 100.079
+protocols.moves.RigidBodyMover: Randomize: Jump (after):  RT 0.803013 -0.143567 -0.57841 0.573851 -0.0756386 0.815459 -0.160823 -0.986746 0.0216474 -1.16294 3.72811 5.95112  
+protocols.moves.RigidBodyMover: Randomize: Rot. Center (after):  2.40558 -1.43069 -6.70396
+protocols.moves.RigidBodyMover: Randomize: ---
+protocols.farna.RNA_FragmentMonteCarlo: Beginning main loop... 
+protocols.farna.RNA_FragmentMonteCarlo: Beginning round 1 of 1
+protocols.farna.RNA_FragmentMonteCarlo: Fragment size: 1
+protocols.farna.RNA_FragmentMonteCarlo:  rot_mag: 2.65    trans_mag: 1.325
+protocols.moves.TrialCounter:           frag 1 trials=    524;  accepts= 0.9179;  energy_drop/trial=   0.00254
+protocols.moves.TrialCounter:       rigid_body trials=    379;  accepts= 0.8338;  energy_drop/trial=  -0.02567
+core.scoring.rna.RNA_LowResolutionPotential: Reading basepair x - y potential file: scoring/rna/rna_base_pair_xy.dat
+core.scoring.rna.RNA_LowResolutionPotential: Finished reading basepair x - y potential file: scoring/rna/rna_base_pair_xy.dat
+core.scoring.rna.RNA_LowResolutionPotential: Reading non - base - base x - y potential file: scoring/rna/rna_base_backbone_xy.dat
+core.scoring.rna.RNA_LowResolutionPotential: Reading RNA backbone backbone potential file: scoring/rna/rna_backbone_backbone.dat
+protocols.farna.RNA_FragmentMonteCarlo: Checking base pairs early! Result: 1
+protocols.farna.RNA_FragmentMonteCarlo: Checking loop closure with tolerance of 12 Angstroms! Result: 1
+protocols.farna.RNA_FragmentMonteCarlo: Finished fragment assembly of S_000001 in 1 seconds.
+protocols.farna.RNA_FragmentMonteCarlo: Comparing current lores score 8.34626 to automatically determined cutoff: 8.34626 based on 0.2 quantile from 1 models so far
+protocols.farna.RNA_FragmentMonteCarlo: 
+------------------------------------------------------------
+ Scores                       Weight   Raw Score Wghtd.Score
+------------------------------------------------------------
+ loop_close                   1.000       8.346       8.346
+---------------------------------------------------
+ Total weighted score:                        8.346
+protocols.farna.RNA_FragmentMonteCarlo: 
+protocols.farna.RNA_DeNovoProtocol: Making silent struct for S_000001
+basic.io.database: Database file opened: scoring/rna/rna_atom_vdw.txt
+basic.io.database: Database file opened: scoring/rna/rnp_atom_vdw_min_distances_reformat_MIN.txt
+core.scoring.rna.RNA_LowResolutionPotential: Reading basepair x - y potential file: scoring/rna/rna_base_pair_xy.dat
+core.scoring.rna.RNA_LowResolutionPotential: Finished reading basepair x - y potential file: scoring/rna/rna_base_pair_xy.dat
+core.scoring.rna.RNA_LowResolutionPotential: Reading non - base - base x - y potential file: scoring/rna/rna_base_backbone_xy.dat
+core.scoring.rna.RNA_LowResolutionPotential: Reading RNA backbone backbone potential file: scoring/rna/rna_backbone_backbone.dat
+protocols.farna.RNA_DeNovoProtocol: Outputting to silent file: classic.out

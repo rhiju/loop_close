@@ -1,0 +1,1 @@
+read_tensor -tensor_file potential.bin.gz

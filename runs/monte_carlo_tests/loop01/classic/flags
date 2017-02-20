@@ -1,0 +1,10 @@
+-fasta loop.fasta
+-working_res A:1 A:3
+-virtual_anchor A:1 A:3
+-secstruct_legacy HLH
+-minimize_rna false
+-cycles 1000
+-farna:rounds 1
+-temperature 1.0
+-lores_scorefxn loop_close.wts
+-overwrite

@@ -1,0 +1,276 @@
+
+Basic usage:  rna_minimize  -s <pdb file> 
+              rna_minimize  -in:file:silent <silent file> 
+
+ Type -help for full slate of options.
+
+core.init: Rosetta version unknown:0719d240e880f529b775da034de3359630e22db1 2017-02-12 17:02:28 -0800 from git@github.com:RosettaCommons/main.git
+core.init: command: rna_minimize @flags -constant_seed
+core.init: Constant seed mode, seed=1111111 seed_offset=0 real_seed=1111111
+core.init.random: RandomGenerator:init: Normal mode, seed=1111111 RG_type=mt19937
+core.init: Resolved executable path: /Users/rhiju/src/rosetta//main/source/bin/rna_minimize
+core.init: Looking for database based on location of executable: /Users/rhiju/src/rosetta//main/database/
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 544 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 0.522311 seconds.
+core.io.silent.SilentFileData: Reading all structures from loop01_test.out
+core.io.silent.SilentFileData: Finished reading 1 structures from loop01_test.out
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: loop_close.wts
+protocols.farna.movers.RNA_Minimizer: Minimizing...round= 1
+protocols.farna.movers.RNA_Minimizer: --------------------------------------------------------------------------------------
+protocols.farna.movers.RNA_Minimizer: Movemap ( in term of partial_pose seq_num ): 
+protocols.farna.movers.RNA_Minimizer:    res_num   alpha      beta     gamma     delta    epsilon     zeta     chi_1      nu_2      nu_1    chi_O2' 
+protocols.farna.movers.RNA_Minimizer:        001     F         F         F         T         F         F         T         T         T         T    
+protocols.farna.movers.RNA_Minimizer:        002     F         F         F         T         F         F         T         T         T         T    
+protocols.farna.movers.RNA_Minimizer:        003     F         F         F         F         F         F         F         F         F         F    
+protocols.farna.movers.RNA_Minimizer: --------------------------------------------------------------------------------------
+protocols.farna.movers.RNA_Minimizer: print movemap jump_points [explicit method]: 
+protocols.farna.movers.RNA_Minimizer: n = 1 | jump_pos1 = 3 | jump_pos2 = 1 | mm.get_jump( n ) =    T
+protocols.farna.movers.RNA_Minimizer: n = 2 | jump_pos1 = 3 | jump_pos2 = 2 | mm.get_jump( n ) =    T
+protocols.farna.movers.RNA_Minimizer: --------------------------------------------------------------------------------------
+protocols.farna.movers.RNA_Minimizer: print movemap jump_points [iterator method]: 
+protocols.farna.movers.RNA_Minimizer: --------------------------------------------------------------------------------------
+core.optimization: ratio inc rsd typ atm prsd ptyp patm natm   numeric  analytic     ratio       f11       f00       f22  vars[ii]
+core.optimization: ratio   1   2   1   5    2    1    6    9   -0.0014   -0.0014    1.0000    8.4952    8.4952    8.4952 -160.6080
+core.optimization: ratio   2   2   1   5    2    1    6    9   -0.0014   -0.0014    1.0000    8.4952    8.4952    8.4952 -160.6080
+core.optimization: ratio   3   2   1   5    2    1    6    9   -0.0014   -0.0014    1.0000    8.4952    8.4952    8.4952 -160.6080
+core.optimization: ratio   4   2   1   5    2    1    6    9   -0.0014   -0.0014    1.0000    8.4952    8.4952    8.4952 -160.6080
+core.optimization: ratio   5   2   1   5    2    1    6    9   -0.0014   -0.0014    1.0000    8.4952    8.4952    8.4952 -160.6080
+core.optimization: deriv_dev: 1 22  8.49517295 1 5 2 -0.00141356067  2.40030378E-10  1.69805501E-07
+core.optimization: deriv_dev: 2 22  8.49517295 1 5 1  0  0  0
+core.optimization: ratio   1   2   1   6    2    1    8    3    0.0026    0.0026    1.0000    8.4952    8.4952    8.4952   41.7026
+core.optimization: ratio   2   2   1   6    2    1    8    3    0.0026    0.0026    1.0000    8.4952    8.4952    8.4952   41.7026
+core.optimization: ratio   3   2   1   6    2    1    8    3    0.0026    0.0026    1.0000    8.4952    8.4952    8.4952   41.7026
+core.optimization: ratio   4   2   1   6    2    1    8    3    0.0026    0.0026    1.0000    8.4952    8.4952    8.4952   41.7026
+core.optimization: ratio   5   2   1   6    2    1    8    3    0.0026    0.0026    1.0000    8.4952    8.4952    8.4951   41.7026
+core.optimization: deriv_dev: 3 22  8.49517295 1 6 2  0.00260591707  1.93252229E-09  7.41590098E-07
+core.optimization: deriv_dev: 4 22  8.49517295 1 30 2  0  0  0
+core.optimization: ratio   1   1   1   6    1    1    8    3   -0.0015   -0.0015    1.0000    8.4952    8.4952    8.4952   37.8434
+core.optimization: ratio   2   1   1   6    1    1    8    3   -0.0015   -0.0015    1.0000    8.4952    8.4952    8.4952   37.8434
+core.optimization: ratio   3   1   1   6    1    1    8    3   -0.0015   -0.0015    1.0000    8.4952    8.4952    8.4952   37.8434
+core.optimization: ratio   4   1   1   6    1    1    8    3   -0.0015   -0.0015    1.0000    8.4952    8.4952    8.4952   37.8434
+core.optimization: ratio   5   1   1   6    1    1    8    3   -0.0015   -0.0015    1.0000    8.4951    8.4952    8.4952   37.8434
+core.optimization: deriv_dev: 5 22  8.49517295 1 6 1 -0.00150678425  4.78823558E-10  3.17778447E-07
+core.optimization: deriv_dev: 6 22  8.49517295 1 30 1  0  0  0
+core.optimization: ratio   1   2   1   8    2    1   11    3    0.0047    0.0047    1.0000    8.4952    8.4952    8.4952   91.7251
+core.optimization: ratio   2   2   1   8    2    1   11    3    0.0047    0.0047    1.0000    8.4952    8.4952    8.4952   91.7251
+core.optimization: ratio   3   2   1   8    2    1   11    3    0.0047    0.0047    1.0000    8.4952    8.4952    8.4952   91.7251
+core.optimization: ratio   4   2   1   8    2    1   11    3    0.0047    0.0047    1.0000    8.4952    8.4952    8.4951   91.7251
+core.optimization: ratio   5   2   1   8    2    1   11    3    0.0047    0.0047    1.0000    8.4952    8.4952    8.4951   91.7251
+core.optimization: deriv_dev: 7 22  8.49517295 1 8 2  0.00471306901  2.28171417E-09  4.84124924E-07
+core.optimization: ratio   1   1   1   8    1    1   11    3    0.0015    0.0015    1.0000    8.4952    8.4952    8.4952   83.7229
+core.optimization: ratio   2   1   1   8    1    1   11    3    0.0015    0.0015    1.0000    8.4952    8.4952    8.4952   83.7229
+core.optimization: ratio   3   1   1   8    1    1   11    3    0.0015    0.0015    1.0000    8.4952    8.4952    8.4952   83.7229
+core.optimization: ratio   4   1   1   8    1    1   11    3    0.0015    0.0015    1.0000    8.4952    8.4952    8.4952   83.7229
+core.optimization: ratio   5   1   1   8    1    1   11    3    0.0015    0.0015    1.0000    8.4952    8.4952    8.4951   83.7229
+core.optimization: deriv_dev: 8 22  8.49517295 1 8 1  0.00152422026  1.71046623E-10  1.12219098E-07
+core.optimization: deriv_dev: 9 22  8.49517295 1 11 2  0.000155194904  5.89795467E-10  0
+core.optimization: ratio   1   1   1  11    1    9   17    2    0.0041    0.0041    1.0000    8.4952    8.4952    8.4952   70.1583
+core.optimization: ratio   2   1   1  11    1    9   17    2    0.0041    0.0041    1.0000    8.4952    8.4952    8.4952   70.1583
+core.optimization: ratio   3   1   1  11    1    9   17    2    0.0041    0.0041    1.0000    8.4952    8.4952    8.4952   70.1583
+core.optimization: ratio   4   1   1  11    1    9   17    2    0.0041    0.0041    1.0000    8.4952    8.4952    8.4951   70.1583
+core.optimization: ratio   5   1   1  11    1    9   17    2    0.0041    0.0041    1.0000    8.4952    8.4952    8.4951   70.1583
+core.optimization: deriv_dev: 10 22  8.49517295 1 11 1  0.0040804051  1.73024968E-09  4.24038702E-07
+core.optimization: ratio   1   2   9  17    2    8   17   16   -0.0064   -0.0064    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   2   9  17    2    8   17   16   -0.0064   -0.0064    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   2   9  17    2    8   17   16   -0.0064   -0.0064    1.0000    8.4951    8.4952    8.4952    0.0000
+core.optimization: ratio   4   2   9  17    2    8   17   16   -0.0064   -0.0064    1.0000    8.4951    8.4952    8.4952    0.0000
+core.optimization: ratio   5   2   9  17    2    8   17   16   -0.0064   -0.0064    1.0000    8.4951    8.4952    8.4953    0.0000
+core.optimization: deriv_dev: 11 22  8.49517295 9 17 2 -0.00640001696  2.92596967E-09  4.5718155E-07
+core.optimization: ratio   1   1   9  17    1    8   17   16   -0.0021   -0.0021    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   1   9  17    1    8   17   16   -0.0021   -0.0021    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   1   9  17    1    8   17   16   -0.0021   -0.0021    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   4   1   9  17    1    8   17   16   -0.0021   -0.0021    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   5   1   9  17    1    8   17   16   -0.0021   -0.0021    1.0000    8.4951    8.4952    8.4952    0.0000
+core.optimization: deriv_dev: 12 22  8.49517295 9 17 1 -0.00211225082  2.33684849E-09  1.10633097E-06
+core.optimization: deriv_dev: 13 22  8.49517295 8 17 2 -0.000557040754  3.37710245E-09  0
+core.optimization: ratio   1   1   8  17    1    7   17    0    0.0058    0.0058    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   1   8  17    1    7   17    0    0.0058    0.0058    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   1   8  17    1    7   17    0    0.0058    0.0058    1.0000    8.4952    8.4952    8.4951    0.0000
+core.optimization: ratio   4   1   8  17    1    7   17    0    0.0058    0.0058    1.0000    8.4952    8.4952    8.4951    0.0000
+core.optimization: ratio   5   1   8  17    1    7   17    0    0.0058    0.0058    1.0000    8.4953    8.4952    8.4951    0.0000
+core.optimization: deriv_dev: 14 22  8.49517295 8 17 1  0.00583632563  6.7611113E-09  1.1584534E-06
+core.optimization: ratio   1   2   7  17    2    6   17    0   -0.0041   -0.0041    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   2   7  17    2    6   17    0   -0.0041   -0.0041    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   2   7  17    2    6   17    0   -0.0041   -0.0041    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   4   2   7  17    2    6   17    0   -0.0041   -0.0041    1.0000    8.4951    8.4952    8.4952    0.0000
+core.optimization: ratio   5   2   7  17    2    6   17    0   -0.0041   -0.0041    1.0000    8.4951    8.4952    8.4952    0.0000
+core.optimization: deriv_dev: 15 22  8.49517295 7 17 2 -0.0040942648  5.90349841E-09  1.44189463E-06
+core.optimization: ratio   1   1   7  17    1    6   17    0    0.0039    0.0039    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   1   7  17    1    6   17    0    0.0039    0.0039    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   1   7  17    1    6   17    0    0.0039    0.0039    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   4   1   7  17    1    6   17    0    0.0039    0.0039    1.0000    8.4952    8.4952    8.4951    0.0000
+core.optimization: ratio   5   1   7  17    1    6   17    0    0.0039    0.0039    1.0000    8.4952    8.4952    8.4951    0.0000
+core.optimization: deriv_dev: 16 22  8.49517295 7 17 1  0.00387684965  5.03529426E-09  1.29881082E-06
+core.optimization: ratio   1   2   6  17    2    5   17    0    0.0031    0.0031    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   2   6  17    2    5   17    0    0.0031    0.0031    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   2   6  17    2    5   17    0    0.0031    0.0031    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   4   2   6  17    2    5   17    0    0.0031    0.0031    1.0000    8.4952    8.4952    8.4951    0.0000
+core.optimization: ratio   5   2   6  17    2    5   17    0    0.0031    0.0031    1.0000    8.4952    8.4952    8.4951    0.0000
+core.optimization: deriv_dev: 17 22  8.49517295 6 17 2  0.00313816217  3.75022334E-09  1.19503809E-06
+core.optimization: ratio   1   1   6  17    1    5   17    0   -0.0031   -0.0031    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   1   6  17    1    5   17    0   -0.0031   -0.0031    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   1   6  17    1    5   17    0   -0.0031   -0.0031    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   4   1   6  17    1    5   17    0   -0.0031   -0.0031    1.0000    8.4951    8.4952    8.4952    0.0000
+core.optimization: ratio   5   1   6  17    1    5   17    0   -0.0031   -0.0031    1.0000    8.4951    8.4952    8.4952    0.0000
+core.optimization: deriv_dev: 18 22  8.49517295 6 17 1 -0.00313816217  2.31936594E-09  7.39084155E-07
+core.optimization: ratio   1   2   5  17    2    4   17    0    0.0048    0.0048    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   2   5  17    2    4   17    0    0.0048    0.0048    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   2   5  17    2    4   17    0    0.0048    0.0048    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   4   2   5  17    2    4   17    0    0.0048    0.0048    1.0000    8.4952    8.4952    8.4951    0.0000
+core.optimization: ratio   5   2   5  17    2    4   17    0    0.0048    0.0048    1.0000    8.4953    8.4952    8.4951    0.0000
+core.optimization: deriv_dev: 19 22  8.49517295 5 17 2  0.00483085425  6.31904961E-09  1.3080605E-06
+core.optimization: ratio   1   1   5  17    1    4   17    0   -0.0048   -0.0048    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   1   5  17    1    4   17    0   -0.0048   -0.0048    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   1   5  17    1    4   17    0   -0.0048   -0.0048    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   4   1   5  17    1    4   17    0   -0.0048   -0.0048    1.0000    8.4951    8.4952    8.4952    0.0000
+core.optimization: ratio   5   1   5  17    1    4   17    0   -0.0048   -0.0048    1.0000    8.4951    8.4952    8.4953    0.0000
+core.optimization: deriv_dev: 20 22  8.49517295 5 17 1 -0.00483085425  5.35870669E-09  1.10926689E-06
+core.optimization: ratio   1   2   4  17    0    1    0    0   -0.0056   -0.0056    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   2   4  17    0    1    0    0   -0.0056   -0.0056    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   2   4  17    0    1    0    0   -0.0056   -0.0056    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   4   2   4  17    0    1    0    0   -0.0056   -0.0056    1.0000    8.4951    8.4952    8.4952    0.0000
+core.optimization: ratio   5   2   4  17    0    1    0    0   -0.0056   -0.0056    1.0000    8.4951    8.4952    8.4953    0.0000
+core.optimization: deriv_dev: 21 22  8.49517295 4 17 2 -0.00556272613  5.24364289E-09  9.42639053E-07
+core.optimization: ratio   1   1   4  17    0    1    0    0    0.0056    0.0056    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   2   1   4  17    0    1    0    0    0.0056    0.0056    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   3   1   4  17    0    1    0    0    0.0056    0.0056    1.0000    8.4952    8.4952    8.4952    0.0000
+core.optimization: ratio   4   1   4  17    0    1    0    0    0.0056    0.0056    1.0000    8.4952    8.4952    8.4951    0.0000
+core.optimization: ratio   5   1   4  17    0    1    0    0    0.0056    0.0056    1.0000    8.4953    8.4952    8.4951    0.0000
+core.optimization: deriv_dev: 22 22  8.49517295 4 17 1  0.00556272613  4.45827112E-09  8.01454362E-07
+core.optimization:  norm: 1       0.0171 norm_numeric:       0.0171 cos_theta:  1.0000 log_norm_ratio:    0.0000
+core.optimization:  norm: 2       0.0171 norm_numeric:       0.0171 cos_theta:  1.0000 log_norm_ratio:    0.0000
+core.optimization:  norm: 3       0.0171 norm_numeric:       0.0171 cos_theta:  1.0000 log_norm_ratio:    0.0000
+core.optimization:  norm: 4       0.0171 norm_numeric:       0.0171 cos_theta:  1.0000 log_norm_ratio:    0.0000
+core.optimization:  norm: 5       0.0171 norm_numeric:       0.0171 cos_theta:  1.0000 log_norm_ratio:    0.0000
+core.optimization: deriv_dev: 1 22  8.3349464 1 5 2 -4.57567191E-05  5.51983105E-12  0
+core.optimization: deriv_dev: 2 22  8.3349464 1 5 1  0  0  0
+core.optimization: deriv_dev: 3 22  8.3349464 1 6 2  6.18501487E-05  3.16498268E-11  0
+core.optimization: deriv_dev: 4 22  8.3349464 1 30 2  0  0  0
+core.optimization: deriv_dev: 5 22  8.3349464 1 6 1 -4.02392193E-05  1.01712305E-11  0
+core.optimization: deriv_dev: 6 22  8.3349464 1 30 1  0  0  0
+core.optimization: deriv_dev: 7 22  8.3349464 1 8 2  8.51581967E-05  2.19375894E-11  0
+core.optimization: deriv_dev: 8 22  8.3349464 1 8 1  6.33880605E-05  3.3919937E-11  0
+core.optimization: deriv_dev: 9 22  8.3349464 1 11 2 -2.65463101E-05  8.09287335E-12  0
+core.optimization: deriv_dev: 10 22  8.3349464 1 11 1  1.61591371E-05  5.67954152E-11  0
+core.optimization: deriv_dev: 11 22  8.3349464 9 17 2 -0.00011224944  1.43800293E-11  0
+core.optimization: deriv_dev: 12 22  8.3349464 9 17 1  1.18367298E-05  2.67916761E-10  0
+core.optimization: deriv_dev: 13 22  8.3349464 8 17 2 -3.62688142E-05  1.33286945E-10  0
+core.optimization: deriv_dev: 14 22  8.3349464 8 17 1  0.000172236817  2.72397649E-10  0
+core.optimization: deriv_dev: 15 22  8.3349464 7 17 2 -2.83917864E-05  5.873612E-12  0
+core.optimization: deriv_dev: 16 22  8.3349464 7 17 1 -2.74789194E-05  7.62424551E-11  0
+core.optimization: deriv_dev: 17 22  8.3349464 6 17 2  5.57049096E-05  5.19441459E-11  0
+core.optimization: deriv_dev: 18 22  8.3349464 6 17 1 -5.57049096E-05  7.58425243E-11  0
+core.optimization: deriv_dev: 19 22  8.3349464 5 17 2 -4.23177605E-05  2.34412205E-11  0
+core.optimization: deriv_dev: 20 22  8.3349464 5 17 1  4.23177605E-05  1.0781817E-10  0
+core.optimization: deriv_dev: 21 22  8.3349464 4 17 2 -0.000183366189  1.35094199E-10  0
+core.optimization: deriv_dev: 22 22  8.3349464 4 17 1  0.000183366189  8.14019655E-12  0
+core.optimization:  norm: 1       0.0004 norm_numeric:       0.0004 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 2       0.0004 norm_numeric:       0.0004 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 3       0.0004 norm_numeric:       0.0004 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 4       0.0004 norm_numeric:       0.0004 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 5       0.0004 norm_numeric:       0.0004 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization: deriv_dev: 1 22  8.33490574 1 5 2 -2.65175487E-05  8.30402266E-12  0
+core.optimization: deriv_dev: 2 22  8.33490574 1 5 1  0  0  0
+core.optimization: deriv_dev: 3 22  8.33490574 1 6 2  2.33751497E-05  7.51903124E-13  0
+core.optimization: deriv_dev: 4 22  8.33490574 1 30 2  0  0  0
+core.optimization: deriv_dev: 5 22  8.33490574 1 6 1 -1.67926482E-05  1.59661495E-11  0
+core.optimization: deriv_dev: 6 22  8.33490574 1 30 1  0  0  0
+core.optimization: deriv_dev: 7 22  8.33490574 1 8 2  1.57972339E-05  1.49053233E-11  0
+core.optimization: deriv_dev: 8 22  8.33490574 1 8 1  3.87656108E-05  3.57982131E-11  0
+core.optimization: deriv_dev: 9 22  8.33490574 1 11 2 -2.54463701E-05  2.15079747E-11  0
+core.optimization: deriv_dev: 10 22  8.33490574 1 11 1 -4.39649646E-05  3.06119608E-11  0
+core.optimization: deriv_dev: 11 22  8.33490574 9 17 2 -9.24817643E-06  5.48664496E-11  0
+core.optimization: deriv_dev: 12 22  8.33490574 9 17 1  4.51537914E-05  2.90304836E-10  0
+core.optimization: deriv_dev: 13 22  8.33490574 8 17 2 -3.44806982E-05  9.40030534E-11  0
+core.optimization: deriv_dev: 14 22  8.33490574 8 17 1  8.1145733E-05  1.3757536E-10  0
+core.optimization: deriv_dev: 15 22  8.33490574 7 17 2  3.36194373E-05  1.29494879E-10  0
+core.optimization: deriv_dev: 16 22  8.33490574 7 17 1 -8.58869942E-05  3.27748466E-11  0
+core.optimization: deriv_dev: 17 22  8.33490574 6 17 2  7.20295407E-06  2.10341558E-11  0
+core.optimization: deriv_dev: 18 22  8.33490574 6 17 1 -7.20295407E-06  3.6910345E-11  0
+core.optimization: deriv_dev: 19 22  8.33490574 5 17 2 -0.000117105424  6.56408954E-11  0
+core.optimization: deriv_dev: 20 22  8.33490574 5 17 1  0.000117105424  3.35575319E-11  0
+core.optimization: deriv_dev: 21 22  8.33490574 4 17 2 -9.21343396E-05  4.62946321E-11  0
+core.optimization: deriv_dev: 22 22  8.33490574 4 17 1  9.21343396E-05  4.85184142E-11  0
+core.optimization:  norm: 1       0.0003 norm_numeric:       0.0003 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 2       0.0003 norm_numeric:       0.0003 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 3       0.0003 norm_numeric:       0.0003 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 4       0.0003 norm_numeric:       0.0003 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 5       0.0003 norm_numeric:       0.0003 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization: deriv_dev: 1 22  8.33485022 1 5 2  5.88650024E-07  6.62992212E-15  0
+core.optimization: deriv_dev: 2 22  8.33485022 1 5 1  0  0  0
+core.optimization: deriv_dev: 3 22  8.33485022 1 6 2 -5.14041428E-07  6.18546794E-13  0
+core.optimization: deriv_dev: 4 22  8.33485022 1 30 2  0  0  0
+core.optimization: deriv_dev: 5 22  8.33485022 1 6 1  7.95379655E-07  7.8095762E-13  0
+core.optimization: deriv_dev: 6 22  8.33485022 1 30 1  0  0  0
+core.optimization: deriv_dev: 7 22  8.33485022 1 8 2  2.86396924E-07  1.98024378E-12  0
+core.optimization: deriv_dev: 8 22  8.33485022 1 8 1 -9.6462771E-07  1.10870641E-12  0
+core.optimization: deriv_dev: 9 22  8.33485022 1 11 2  3.57396151E-06  2.17032491E-12  0
+core.optimization: deriv_dev: 10 22  8.33485022 1 11 1 -2.71505928E-06  2.59891395E-12  0
+core.optimization: deriv_dev: 11 22  8.33485022 9 17 2  4.17250846E-06  2.65205171E-12  0
+core.optimization: deriv_dev: 12 22  8.33485022 9 17 1  1.32971629E-06  4.03930478E-12  0
+core.optimization: deriv_dev: 13 22  8.33485022 8 17 2  3.92618622E-06  1.06626926E-12  0
+core.optimization: deriv_dev: 14 22  8.33485022 8 17 1 -9.81938043E-07  1.28882101E-12  0
+core.optimization: deriv_dev: 15 22  8.33485022 7 17 2 -1.89588106E-06  1.39321023E-11  0
+core.optimization: deriv_dev: 16 22  8.33485022 7 17 1 -2.41910514E-06  1.9413814E-12  0
+core.optimization: deriv_dev: 17 22  8.33485022 6 17 2  4.68246691E-06  3.44597684E-12  0
+core.optimization: deriv_dev: 18 22  8.33485022 6 17 1 -4.68246691E-06  5.38029621E-12  0
+core.optimization: deriv_dev: 19 22  8.33485022 5 17 2 -2.9812385E-06  1.28459022E-13  0
+core.optimization: deriv_dev: 20 22  8.33485022 5 17 1  2.9812385E-06  3.6811727E-12  0
+core.optimization: deriv_dev: 21 22  8.33485022 4 17 2  3.71134823E-06  5.5282845E-13  0
+core.optimization: deriv_dev: 22 22  8.33485022 4 17 1 -3.71134823E-06  6.32598818E-12  0
+core.optimization:  norm: 1       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 2       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 3       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 4       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 5       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+protocols.farna.movers.RNA_Minimizer: Minimizing...round= 2
+protocols.farna.movers.RNA_Minimizer: --------------------------------------------------------------------------------------
+protocols.farna.movers.RNA_Minimizer: Movemap ( in term of partial_pose seq_num ): 
+protocols.farna.movers.RNA_Minimizer:    res_num   alpha      beta     gamma     delta    epsilon     zeta     chi_1      nu_2      nu_1    chi_O2' 
+protocols.farna.movers.RNA_Minimizer:        001     F         F         F         T         F         F         T         T         T         T    
+protocols.farna.movers.RNA_Minimizer:        002     F         F         F         T         F         F         T         T         T         T    
+protocols.farna.movers.RNA_Minimizer:        003     F         F         F         F         F         F         F         F         F         F    
+protocols.farna.movers.RNA_Minimizer: --------------------------------------------------------------------------------------
+protocols.farna.movers.RNA_Minimizer: print movemap jump_points [explicit method]: 
+protocols.farna.movers.RNA_Minimizer: n = 1 | jump_pos1 = 3 | jump_pos2 = 1 | mm.get_jump( n ) =    T
+protocols.farna.movers.RNA_Minimizer: n = 2 | jump_pos1 = 3 | jump_pos2 = 2 | mm.get_jump( n ) =    T
+protocols.farna.movers.RNA_Minimizer: --------------------------------------------------------------------------------------
+protocols.farna.movers.RNA_Minimizer: print movemap jump_points [iterator method]: 
+protocols.farna.movers.RNA_Minimizer: --------------------------------------------------------------------------------------
+core.optimization: deriv_dev: 1 22  8.33485022 1 5 2  5.73237052E-07  1.83111104E-13  0
+core.optimization: deriv_dev: 2 22  8.33485022 1 5 1  0  0  0
+core.optimization: deriv_dev: 3 22  8.33485022 1 6 2 -5.1050185E-07  1.32591271E-14  0
+core.optimization: deriv_dev: 4 22  8.33485022 1 30 2  0  0  0
+core.optimization: deriv_dev: 5 22  8.33485022 1 6 1  7.82140862E-07  1.12035341E-12  0
+core.optimization: deriv_dev: 6 22  8.33485022 1 30 1  0  0  0
+core.optimization: deriv_dev: 7 22  8.33485022 1 8 2  2.55788538E-07  2.07321281E-12  0
+core.optimization: deriv_dev: 8 22  8.33485022 1 8 1 -9.38385695E-07  1.21386387E-12  0
+core.optimization: deriv_dev: 9 22  8.33485022 1 11 2  3.48944571E-06  2.12891696E-12  0
+core.optimization: deriv_dev: 10 22  8.33485022 1 11 1 -2.70726287E-06  2.45735372E-12  0
+core.optimization: deriv_dev: 11 22  8.33485022 9 17 2  4.13018374E-06  2.22927599E-12  0
+core.optimization: deriv_dev: 12 22  8.33485022 9 17 1  1.33853903E-06  4.0246679E-12  0
+core.optimization: deriv_dev: 13 22  8.33485022 8 17 2  3.58327755E-06  2.87539941E-12  0
+core.optimization: deriv_dev: 14 22  8.33485022 8 17 1 -1.06872176E-06  1.09741001E-12  0
+core.optimization: deriv_dev: 15 22  8.33485022 7 17 2 -2.22426294E-06  1.3821967E-11  0
+core.optimization: deriv_dev: 16 22  8.33485022 7 17 1 -2.5664334E-06  2.54831307E-12  0
+core.optimization: deriv_dev: 17 22  8.33485022 6 17 2  4.56749021E-06  3.28196581E-12  0
+core.optimization: deriv_dev: 18 22  8.33485022 6 17 1 -4.56749021E-06  5.15572918E-12  0
+core.optimization: deriv_dev: 19 22  8.33485022 5 17 2 -3.00829229E-06  4.09627844E-15  0
+core.optimization: deriv_dev: 20 22  8.33485022 5 17 1  3.00829229E-06  3.55680996E-12  0
+core.optimization: deriv_dev: 21 22  8.33485022 4 17 2  3.63492438E-06  7.42758299E-13  0
+core.optimization: deriv_dev: 22 22  8.33485022 4 17 1 -3.63492438E-06  6.23836227E-12  0
+core.optimization:  norm: 1       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 2       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 3       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 4       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+core.optimization:  norm: 5       0.0000 norm_numeric:       0.0000 cos_theta:  1.0000 log_norm_ratio:    1.0000
+protocols.farna.movers.RNA_Minimizer: 
+------------------------------------------------------------
+ Scores                       Weight   Raw Score Wghtd.Score
+------------------------------------------------------------
+ loop_close                   1.000       8.335       8.335
+ linear_chainbreak            5.000       0.000       0.000
+---------------------------------------------------
+ Total weighted score:                        8.335
+protocols.farna.movers.RNA_Minimizer: RNA minimizer finished in 0 seconds.
+Outputting S_000001_minimize to silent file: loop01_minimize.out

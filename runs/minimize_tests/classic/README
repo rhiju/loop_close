@@ -1,0 +1,2 @@
+rm -rf loop*minimize*.out *default*out
+rna_minimize @flags -constant_seed > log

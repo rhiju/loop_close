@@ -1,6 +1,7 @@
 function E = derive_potential( T )
 % E = derive_potential( T )
 %
+% T = tensor/json with WHAM-compiled 6D statistics
 %
 nrotbins = size( T.tensor, 4 );
 assert( size( T.tensor, 5 ) == nrotbins );
@@ -29,6 +30,8 @@ F(isnan(F)) = Inf; % Inf is a sign of missing data.
 E = T;
 E.tensor = F;
 E.json.type = class( F ); % double
+E.Emax = 0;
+E.Rmax = 0;
 
 % let's pad by one extra bin in each of the rotation vector directions
 % this will allow me to ensure continuous interpolation upon traversing
@@ -39,7 +42,9 @@ E = pad_at_pi( E );
 E = fill_2pi( E );
 
 % get rid of inf -- use nearest non-inf neighbor.
+% also: sets Emax, Rmax.
 E = fill_inf_by_knn( E );
+E.json
 
 visualize_6D_potential( E, 0, 0 );
 
@@ -121,8 +126,9 @@ Fmax = max( F( ~isinf(F) ) );
 F( isinf(F) ) = Fmax;
 fprintf( 'Filling rest of no-statistics points to be max energy %f.\n', Fmax );
 
-
 E.tensor = F;
+E.json.Rmax = Rmax;
+E.json.Emax = Fmax;
 
 function [x,y,z,Vx,Vy,Vz] = get_bin_centers( json );
 x  = [json.minval(1): json.binwidth(1) : json.maxval(1)];

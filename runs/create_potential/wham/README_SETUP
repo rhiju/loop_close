@@ -1,17 +1,18 @@
-./setup_wham_jump_runs.py  -length  2 -points 0 -binwidth 0.5 -boxsize  5.0
-./setup_wham_jump_runs.py  -length  3 -points 0 -binwidth 2.0 -boxsize 20.0
-./setup_wham_jump_runs.py  -length  4 -points 0 -binwidth 2.5 -boxsize 25.0
-./setup_wham_jump_runs.py  -length  5 -points 0 -binwidth 3.0 -boxsize 30.0
-./setup_wham_jump_runs.py  -length  6 -points 0 -binwidth 4.0 -boxsize 40.0
-./setup_wham_jump_runs.py  -length  7 -points 0 -binwidth 4.5 -boxsize 45.0
-./setup_wham_jump_runs.py  -length  8 -points 0 -binwidth 5.0 -boxsize 50.0
-./setup_wham_jump_runs.py  -length  9 -points 0 -binwidth 6.0 -boxsize 60.0
-./setup_wham_jump_runs.py  -length 10 -points 0 -binwidth 8.0 -boxsize 80.0
-./setup_wham_jump_runs.py  -length 11 -points 0 -binwidth 8.0 -boxsize 80.0
-./setup_wham_jump_runs.py  -length 12 -points 0 -binwidth 8.0 -boxsize 80.0
-./setup_wham_jump_runs.py  -length 20 -points 0 -binwidth 12.0 -boxsize 120.0
+#./setup_wham_jump_runs.py  -length  0 -points -5 -2.5 0 2.5 5 -binwidth 0.5 -boxsize  5.0
+#./setup_wham_jump_runs.py  -length  1 -points -10 -5 0 5 10  -binwidth 2.0 -boxsize 20.0
+#./setup_wham_jump_runs.py  -length  4 -points -20 -10 0 10 20  -binwidth 4.0 -boxsize 40.0
+#./setup_wham_jump_runs.py  -length 18 -points -80 -40 0 40 80 -binwidth 12.0 -boxsize 120.0
+
+./setup_wham_jump_runs.py  -length  2 -points -15 -7.5 0 7.5 15 -binwidth 2.5 -boxsize 25.0
+./setup_wham_jump_runs.py  -length  3 -points -18 -9   0 9   18 -binwidth 3.0 -boxsize 30.0
+./setup_wham_jump_runs.py  -length  5 -points -45 -22.5 0 22.5 45   -binwidth 4.5 -boxsize 45.0
+./setup_wham_jump_runs.py  -length  6 -points -50 -25 0 25 50 -binwidth 5.0 -boxsize 50.0
+./setup_wham_jump_runs.py  -length  7 -points -60 -30 0 30 60 -binwidth 6.0 -boxsize 60.0
+./setup_wham_jump_runs.py  -length 8 -points -80 -40 0 40 80 -binwidth 8.0 -boxsize 80.0
+./setup_wham_jump_runs.py  -length 9 -points -80 -40 0 40 80 -binwidth 8.0 -boxsize 80.0
+./setup_wham_jump_runs.py  -length 10 -points -80 -40 0 40 80 -binwidth 8.0 -boxsize 80.0
 
 
 # original pilot
-#./setup_wham_jump_runs.py  -length 3
-#./setup_wham_jump_runs.py  -length 3 -points -5 5 -skip_no_bias -append
+#./setup_wham_jump_runs.py  -length 1
+#./setup_wham_jump_runs.py  -length 1 -points -5 5 -skip_no_bias -append
