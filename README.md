@@ -5,8 +5,6 @@ Scripts used to derive 6D potential for RNA loop_close
 + `runs` has a bunch of different Rosetta runs to derive and then test 6D potentials
 + `matlab` has matlab scripts for visualizing 6D potentials and also running WHAM to compute them from Rosetta runs.
 + `notes` has scans of handwritten notes, as well as a running log of this project.
-+ `check_rotations` has some silly scripts to check derivatives of 6D potentials (should move to MATLAB)
-More documentation coming soon...
 
 # Getting started
 To see how to define a 6D potential from Rosetta, check out:
