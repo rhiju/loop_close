@@ -1,0 +1,2 @@
+stepwise @flags -out:file:silent swm_rebuild_6Dpotential.out -use_6D_potential -cycles 200
+#stepwise @flags -out:file:silent swm_rebuild.out -cycles 200

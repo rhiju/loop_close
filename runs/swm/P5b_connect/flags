@@ -1,0 +1,14 @@
+-s P5b_connect_START1_1gid_RNAA.pdb
+-native P5b_connect_NATIVE_1gid_RNAA.pdb
+-extra_min_res  A:150 A:153 
+-fasta P5b_connect.fasta
+-nstruct 20
+-save_times
+-score:weights stepwise/rna/rna_res_level_energy4.wts
+-cycles 2000
+-new_move_selector
+-submotif_frequency 0.2
+-atr_rep_screen_for_docking false
+-superimpose_over_all
+-motif_mode
+-submotif_frequency 0.0
