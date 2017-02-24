@@ -552,9 +552,9 @@ stuff \'91off the line\'92 appears to move with numerical deltas, so likely rela
 [Had to fix a bug]\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic Screen Shot 2017-02-16 at 10.15.12 AM.png \width12600 \height8860
-}¬}\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \
+\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\fs22 \cf2 \cb3 \CocoaLigature0 But note that low energy models are still not connecting:\
@@ -562,11 +562,84 @@ stuff \'91off the line\'92 appears to move with numerical deltas, so likely rela
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f1\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-02-16 at 10.22.55 AM.png \width5140 \height8020
-}¬}\
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
 One issue \'97 I forget to convert the reference state from 1 M to \'c5^-3, so currently loop_close is highly negative [\'967 per loop] Putting in the fix would change numbers by \
 \'96ln(6.022e23/1e27)  = +7.4.   So let\'92s fix that, and also include \'93loop_fixed_cost\'94 (estimate of ln( restricted_volume ), which is close to 0.0). That might favor closing chains, rather than leaving them open.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\fs22 \cf2 \cb3 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \ul /Users/rhiju/projects/RNA/loop_close/runs/swm/P5b_connect\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \ulnone problem solved! The 6D `loop close` (purple) gets to lower energies & RMSDs than classic `loop close` (cyan)  -- closer to matching native-screen (orange and green), which was missed before. By end of 2017, we'll have a next-generation scorefunction for `stepwise` and this should be in it:\ul \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf2 \ul \
+
+\f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-02-20 at 10.21.32 AM.png \width12640 \height8920
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \CocoaLigature0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 \ulnone Lowest energy models with conventional loop_close are actually very good (left), but so is new 6D loop_close (right):\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-02-20 at 10.24.07 AM.png \width4380 \height7200
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-20 at 10.28.37 AM.png \width5080 \height7640
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+The other low energy 6D potential models look OK \'97 2nd lowest would have extruded bulges (left), and 3rd & 4th lowest  both display a (G\'95U)-G triple:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-20 at 10.29.14 AM.png \width4620 \height7460
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-20 at 10.29.00 AM.png \width4700 \height7340
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul Try some bulges\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ulnone \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/loop_close/runs/swm/bulge/\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-02-21 at 3.41.40 PM.png \width10460 \height7080
+}¬}\
+Really cool \'97 single-nt bulges no longer have near-helix conformation (see green), but instead, typical model (cyan) looks like this, i.e. with A as an (unbuilt) spacer (left) and lowest energy models still have A-built but inside:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-21 at 3.59.22 PM.png \width4960 \height3040
+}¬}{{\NeXTGraphic Screen Shot 2017-02-21 at 4.00.50 PM.png \width4880 \height3200
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+For dinucleotide bulge, see tighter helix-like conformation (left; but longer spacer also possible, and A-inside also). Lowest energy conformations have funny kink that includes a A\'95(G-C) triple (right):\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-21 at 4.02.50 PM.png \width3840 \height2160
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-21 at 4.03.08 PM.png \width3860 \height2440
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-21 at 4.03.02 PM.png \width4060 \height3000
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-02-21 at 4.04.54 PM.png \width3760 \height2540
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Next-step \'96\'a0run RECCES on these conformations, including 6D loop close, but with -loop_fixed_cost 0.0 & jump definitions inherited from input state. Make sure to also rerun FARFAR to refine C_eff with sterics  (compared to generic loop_close).\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \CocoaLigature0 \
 }
