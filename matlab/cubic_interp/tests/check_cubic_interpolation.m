@@ -1,4 +1,4 @@
-setup_ctest_functions;
+setup_test_functions;
 
 subplot(4,2,1);
 imagesc( ctrs_fine, ctrs_fine, Ff', [0 6]);

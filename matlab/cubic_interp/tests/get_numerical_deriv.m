@@ -14,6 +14,6 @@ end
 
 fprintf( 'Compare ');
 for n = 1:Ndim; fprintf(' %f', deriv_analytic(n)); end;
-fprintf(' (analytic) to ');
+fprintf(' (analytic) to \n        ');
 for n = 1:Ndim; fprintf(' %f', deriv_numeric(n)); end;
 fprintf(' (numeric) with boundary %s\n', boundary);
