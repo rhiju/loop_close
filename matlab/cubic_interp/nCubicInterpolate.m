@@ -1,18 +1,7 @@
-function [val,deriv] = nCubicInterpolate( F, x, minval, binwidth, boundary, deriv)
+function [val,deriv] = nCubicInterpolate( F, x, minval, binwidth, boundary )
 % val = nCubicInterpolate( F, x, minval, binwidth, boundary)
 %
-F_size = size( F );
-Ndim = length( size( F ) );
-% if ( F_size(1) == 1 );
-%     assert( F_size( 2 ) > 1 );
-%     assert( length( x ) == 1 );
-%     % MATLAB thing -- squeeze() in  prior recursions
-%     % disallows formation of a 'matrix' with single row.
-%     F = F'; 
-% end
-do_basic = ( size( F, 2 ) == 1 );
-if ~exist( 'deriv','var' ) deriv = []; end;
-N = size( F, 1 );
+Ndim = length( x );
 if ischar( boundary ); boundary = repmat({boundary},[1,Ndim]); end
 if length( minval ) < Ndim; minval = repmat( minval, [1,Ndim] ); end;
 if length( binwidth ) < Ndim; binwidth = repmat( binwidth, [1,Ndim] ); end;
@@ -23,17 +12,14 @@ idx = floor( idx_real );
 [idx, Fslice ] = get_Fslice( idx, F, boundary{1} );
 d = idx_real - idx;
 
-if do_basic
+if ( Ndim == 1 )
     [val, dv_dx] = basicInterpolate( Fslice, d );
     deriv = [ dv_dx/binwidth(1) ];
 else
     % here's the recursion: 
     F_size = size( F );
-    if length (F_size ) > 2; 
-        F_size_onefewerdim = F_size(2:end);
-    else
-        F_size_onefewerdim = [ F_size(2), 1 ];
-    end;
+    F_size_onefewerdim = F_size(2:end);
+    if Ndim == 2;  F_size_onefewerdim = [ F_size(2), 1 ]; end; % reshape requires 2 indices. Silly MATLAB.
     for i = 1:4
         % need to look at i-th slice of Fslice -- the reshape
         % lets us pretend that its now a tensor with 1 fewer dimension.

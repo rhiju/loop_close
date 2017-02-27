@@ -22,7 +22,7 @@ x = [0.1211,0.5555,0.4461];
 
 x = [-1.23,1.5,-0.233333];
 for i = 1:length( boundary )
-[val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F_1D, x, minval, binwidth, boundary{i} );
+[val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F_3D, x, minval, binwidth, boundary{i} );
 end
 fprintf( '\n' );
 
