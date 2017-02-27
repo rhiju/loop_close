@@ -2,22 +2,21 @@ function [val,deriv] = nCubicInterpolate( F, x, minval, binwidth, boundary, deri
 % val = nCubicInterpolate( F, x, minval, binwidth, boundary)
 %
 F_size = size( F );
-if ( F_size(1) == 1 );
-    assert( F_size( 2 ) > 1 );
-    assert( length( x ) == 1 );
-    % MATLAB thing -- squeeze() in  prior recursions
-    % disallows formation of a 'matrix' with single row.
-    F = F'; 
-end
+Ndim = length( size( F ) );
+% if ( F_size(1) == 1 );
+%     assert( F_size( 2 ) > 1 );
+%     assert( length( x ) == 1 );
+%     % MATLAB thing -- squeeze() in  prior recursions
+%     % disallows formation of a 'matrix' with single row.
+%     F = F'; 
+% end
 do_basic = ( size( F, 2 ) == 1 );
 if ~exist( 'deriv','var' ) deriv = []; end;
 N = size( F, 1 );
-if ischar( boundary ) 
-    boundary_str = boundary;
-    boundary = {};
-    for i = 1:N; boundary{i} = boundary_str; end;
-end
-
+if ischar( boundary ); boundary = repmat({boundary},[1,Ndim]); end
+if length( minval ) < Ndim; minval = repmat( minval, [1,Ndim] ); end;
+if length( binwidth ) < Ndim; binwidth = repmat( binwidth, [1,Ndim] ); end;
+    
 idx_real = 1 + (x(1) - minval(1))/binwidth(1);
 idx = floor( idx_real );
 
@@ -29,10 +28,18 @@ if do_basic
     deriv = [ dv_dx/binwidth(1) ];
 else
     % here's the recursion: 
-    [p(1),dp_dy(1)] = nCubicInterpolate( squeeze(Fslice(1,:)), x(2:end), minval(2:end), binwidth(2:end), boundary(2:end) );
-    [p(2),dp_dy(2)] = nCubicInterpolate( squeeze(Fslice(2,:)), x(2:end), minval(2:end), binwidth(2:end), boundary(2:end) );
-    [p(3),dp_dy(3)] = nCubicInterpolate( squeeze(Fslice(3,:)), x(2:end), minval(2:end), binwidth(2:end), boundary(2:end) );
-    [p(4),dp_dy(4)] = nCubicInterpolate( squeeze(Fslice(4,:)), x(2:end), minval(2:end), binwidth(2:end), boundary(2:end) );
+    F_size = size( F );
+    if length (F_size ) > 2; 
+        F_size_onefewerdim = F_size(2:end);
+    else
+        F_size_onefewerdim = [ F_size(2), 1 ];
+    end;
+    for i = 1:4
+        % need to look at i-th slice of Fslice -- the reshape
+        % lets us pretend that its now a tensor with 1 fewer dimension.
+        Fslice_i = reshape(Fslice(i,:),F_size_onefewerdim);
+        [p(i),dp_dy(:,i)] = nCubicInterpolate(Fslice_i, x(2:end), minval(2:end), binwidth(2:end), boundary(2:end) );
+    end
     [val, dv_dx, dv_dp] = basicInterpolate( p, d );
     dv_dy = dv_dp * dp_dy';
     deriv = [ dv_dx/binwidth(1), dv_dy ];

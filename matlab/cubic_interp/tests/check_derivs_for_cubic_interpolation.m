@@ -1,26 +1,31 @@
-setup_cubic_test_functions;
+setup_test_functions;
+
+boundary = {'periodic','flat','linear','cubic'};
 
 % check 1D
 x = 0.1211;
-[val,deriv_analytic] = nCubicInterpolate( F_1D, x, minval, binwidth, 'periodic' );
-
-delta = 1.0e-7;
-val_delta = nCubicInterpolate( F_1D, x + delta, minval, binwidth, 'periodic' );
-deriv_numeric = ( val_delta - val )/delta;
-
-fprintf( 'Compare %f (analytic) to %f (numeric)\n',deriv_analytic,deriv_numeric);
-
+[val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F_1D, x, minval, binwidth, 'periodic' );
+x = -1.23;
+for i = 1:length( boundary )
+[val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F_1D, x, minval, binwidth, boundary{i} );
+end
+fprintf( '\n' );
 
 % check 2D
 x = [0.1211,0.5555];
-[val,deriv_analytic] = nCubicInterpolate( F, x, [minval,minval], [binwidth,binwidth], 'periodic' );
-Ndim = 2;
-for n = 1 : Ndim
-    x_delta = x;
-    x_delta( n ) = x( n ) + delta;
-    [val_delta,deriv_analytic] = nCubicInterpolate( F, x_delta, [minval,minval], [binwidth,binwidth], 'periodic' );
-    deriv_numeric(n) =  (val_delta - val ) / delta;
-end
-fprintf( 'Compare %f %f (analytic) to %f %f (numeric)\n',deriv_analytic,deriv_numeric);
+[val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F, x, minval, binwidth, 'periodic' );
+fprintf( '\n' );
 
 % check 3D
+x = [0.1211,0.5555,0.4461];
+[val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F_3D, x, minval, binwidth, 'periodic' );
+
+x = [-1.23,1.5,-0.233333];
+for i = 1:length( boundary )
+[val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F_1D, x, minval, binwidth, boundary{i} );
+end
+fprintf( '\n' );
+
+% check 4D
+x = [0.1211,0.5555,0.4461,0.0022];
+[val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F_4D, x, minval, binwidth, 'periodic' );
