@@ -9,6 +9,8 @@ x = -1.23;
 for i = 1:length( boundary )
 [val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F_1D, x, minval, binwidth, boundary{i} );
 end
+x = +1.005;
+[val, deriv_analytic, deriv_numeric] = get_numerical_deriv( F_1D, x, minval, binwidth, 'linear' );
 fprintf( '\n' );
 
 % check 2D

@@ -27,8 +27,8 @@ plot( ctrs_fine, F_1Dil );
 plot( ctrs_fine, F_1Dic );
 title( 'transect through x = 0' );
 legend( 'target','sampled','interp (periodic)','interp (extrap flat)',...
-        'interp (extrap-linear)','interp (extrap-cubic)' );
-    
+    'interp (extrap-linear)','interp (extrap-cubic)' );
+
 subplot(4,1,3);
 for i = 1:length( ctrs_fine )
     for j = 1:length( ctrs_fine )
@@ -42,6 +42,7 @@ end
 subplot(4,2,5);
 imagesc( ctrs_fine, ctrs_fine, Fip', [0 6]);
 title( 'interp (periodic)' );
+return;
 
 subplot(4,2,6);
 imagesc( ctrs_fine, ctrs_fine, Fif', [0 6]);
