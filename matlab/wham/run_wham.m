@@ -69,19 +69,4 @@ f = reshape( f, h_size(1:6) );
 T.tensor = f/sum(f(:));
 T.json   = json;
 
-% plot the results
-figure(1)
-clf; plot3( maxpt(1), maxpt(2), maxpt(3), 'kx' );
-plot_6d_hist_projxyz( T, 7 );
-expfig( 'projxyz_contours.png' );
-figure(2)
-clf; plot_6d_hist_rotvector( T, maxpt, 4);
-expfig( 'rotvec_contours.png' );
-figure(3)
-visualize_6D_potential( T );
-title( '-log(stats) (projection at z=0, vz=0)' )
-expfig( 'proj4d_logstats.pdf' );
-
-
-
-
+make_6D_plots( T, maxpt );

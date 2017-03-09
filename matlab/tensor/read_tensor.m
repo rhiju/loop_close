@@ -25,7 +25,7 @@ fid = fopen( filename, 'r' );
 if ( use_binary )
     [X, n_data] = fread( fid, json.type );
 else
-    [X, n_data] = fscanf(fid, '%f');
+   [X, n_data] = fscanf(fid, '%f');
 end
 if ( prod( json.n_bins ) ~= n_data )
     fprintf( 'Mismatch between n_data %d and expected value based on product of n_bins %d\n', n_data, prod( json.n_bins) );

@@ -22,7 +22,7 @@ zb = interp1( zbins, 1:h_size(3), xyzval(3), 'nearest' );
 % just rotational stats that correspond to that xyzval translation
 hr = squeeze( h( xb, yb, zb, :, :, : ) );
 C = sum(hr(:))/prod(binsizes(1:3))/(6.022e23)/1e-27;
-fprintf( 'Effective molarity (averaged over rotations) at (%f,%f,%f) is: %f M\n', xyzval, C );
+fprintf( 'Effective molarity (averaged over rotations) at (%f,%f,%f) is: %f M\n', xyzval(1:3), C );
 
 vxbins = [T.json.minval(4) : T.json.binwidth(4) : T.json.maxval(4) ];
 vybins = [T.json.minval(5) : T.json.binwidth(5) : T.json.maxval(5) ];
@@ -40,9 +40,17 @@ vzbins = [T.json.minval(6) : T.json.binwidth(6) : T.json.maxval(6) ];
 Cr = hr/prod(binsizes(1:6))/(6.022e23)/1e-27/(pi/180)^3;
 V = sqrt( VX.^2 + VY.^2 + VZ.^2 )*(pi/180.0);
 Cr_no_sinc = Cr/(1/(8*pi^2));
-uniform_rot_density = (1/(8*pi^2)) * (sin(V/2)./(V/2)).^2;
+uniform_rot_density = (1/(8*pi^2)) * (sinc(V/2/pi)).^2;
 Cr = Cr./uniform_rot_density;
-fprintf( 'Effective molarity (at most favored rotation): %f M\n', max(Cr(:)) );
+if length( xyzval ) == 3 
+    fprintf( 'Effective molarity (at most favored rotation): %f M\n', max(Cr(:)) );
+else
+    assert( length( xyzval ) == 6 )
+    vxb = interp1( vxbins, 1:h_size(4), xyzval(4), 'nearest' );
+    vyb = interp1( vybins, 1:h_size(5), xyzval(5), 'nearest' );
+    vzb = interp1( vzbins, 1:h_size(6), xyzval(6), 'nearest' );
+    fprintf( 'Effective molarity (at rotation %f, %f, %f): %f M\n', xyzval(4:6),Cr(vxb,vyb,vzb));    
+end
 
 % draw it -- note the permute is to ensure x and y aren't MATLAB-flipped.
 hold on
