@@ -39,7 +39,7 @@ vzbins = [T.json.minval(6) : T.json.binwidth(6) : T.json.maxval(6) ];
 %
 Cr = hr/prod(binsizes(1:6))/(6.022e23)/1e-27/(pi/180)^3;
 V = sqrt( VX.^2 + VY.^2 + VZ.^2 )*(pi/180.0);
-Cr_no_sinc = Cr/(1/(8*pi^2));
+% Cr_no_sinc = Cr/(1/(8*pi^2));
 uniform_rot_density = (1/(8*pi^2)) * (sinc(V/2/pi)).^2;
 Cr = Cr./uniform_rot_density;
 if length( xyzval ) == 3 
