@@ -29,12 +29,12 @@ void WARNING(const char *);
 
 
 /* check the compilier state to use the appropriate inline directive */
-#ifdef __GNUC__ /* use the GNUC special form */
-#define INLINE __inline__
-#elif defined(__STDC__) && __STDC_VERSION__ >= 199901L /*C99 compat compilier*/
-#define INLINE static inline
-#else /* fall back on C89 version, i.e. *no inlines* */
-#define INLINE
+#if defined(__STDC__) && __STDC_VERSION__ >= 199901L /*C99 compat compilier*/ 
+#define INLINE static inline 
+#elif defined(__GNUC__) /* use the GNUC special form */ 
+#define INLINE __inline__ 
+#else /* fall back on C89 version, i.e. *no inlines* */ 
+#define INLINE 
 #endif
 
 /* enum list for different data types -- MATCHED TO THE MATLAB ONES */

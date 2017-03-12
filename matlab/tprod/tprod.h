@@ -43,12 +43,12 @@ typedef enum { RXRY=0, CXRY=1, RXCY=2, CXCY=3} RealComplexInputTypes; /* enum fo
 #endif
 
 /* check the compilier state to use the appropriate inline directive */
-#ifdef __GNUC__ /* use the GNUC special form */
-#define INLINE __inline__
-#elif defined(__STDC__) && __STDC_VERSION__ >= 199901L /*C99 compat compilier*/
-#define INLINE static inline
-#else /* fall back on C89 version, i.e. *no inlines* */
-#define INLINE
+#if defined(__STDC__) && __STDC_VERSION__ >= 199901L /*C99 compat compilier*/ 
+#define INLINE static inline 
+#elif defined(__GNUC__) /* use the GNUC special form */ 
+#define INLINE __inline__ 
+#else /* fall back on C89 version, i.e. *no inlines* */ 
+#define INLINE 
 #endif
 
 typedef enum { /* types of error we could encounter in repop */
