@@ -1,0 +1,22 @@
+# six-way junction tests
+#rna_denovo @flags -sequence guuuc+guuuc -secstruct "(...(+)...)" -cutpoint_closed 1 -out:file:silent guuuc_guuuc_chainbreak0.001.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence guuc+guuuuc -secstruct "(..(+)....)" -cutpoint_closed 1 -out:file:silent guuc_guuuuc_chainbreak0.001.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence guc+guuuuuc -secstruct "(.(+).....)" -cutpoint_closed 1 -out:file:silent guc_guuuuuc_chainbreak0.001.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence gc+guuuuuuc -secstruct "((+)......)" -cutpoint_closed 1 -out:file:silent gc_guuuuuuc_chainbreak0.001.out -rna_lores_chainbreak_weight 0.001
+
+
+#rna_denovo @flags -sequence guuuc+guuuc -secstruct "(...(+)...)" -cutpoint_closed 1 -out:file:silent guuuc_guuuc_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence guuc+guuuuc -secstruct "(..(+)....)" -cutpoint_closed 1 -out:file:silent guuc_guuuuc_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence guc+guuuuuc -secstruct "(.(+).....)" -cutpoint_closed 1 -out:file:silent guc_guuuuuc_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence gc+guuuuuuc -secstruct "((+)......)" -cutpoint_closed 1 -out:file:silent gc_guuuuuuc_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+
+#rna_denovo @flags -sequence guuuc+guuuc -secstruct "(...(+)...)" -cutpoint_closed 1 -out:file:silent guuuc_guuuc_chainbreak0.001_RPT2.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence guuc+guuuuc -secstruct "(..(+)....)" -cutpoint_closed 1 -out:file:silent guuc_guuuuc_chainbreak0.001_RPT2.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence guc+guuuuuc -secstruct "(.(+).....)" -cutpoint_closed 1 -out:file:silent guc_guuuuuc_chainbreak0.001_RPT2.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence gc+guuuuuuc -secstruct "((+)......)" -cutpoint_closed 1 -out:file:silent gc_guuuuuuc_chainbreak0.001_RPT2.out -rna_lores_chainbreak_weight 0.001
+
+rna_denovo @flags -sequence guc+guc -secstruct "(.(+).)" -cutpoint_closed 1 -out:file:silent guc_guc_chainbreak0.001.out -rna_lores_chainbreak_weight 0.001
+rna_denovo @flags -sequence guc+guc -secstruct "(.(+).)" -cutpoint_closed 1 -out:file:silent guc_guc_chainbreak0.01.out -rna_lores_chainbreak_weight 0.01
+rna_denovo @flags -sequence guc+guc -secstruct "(.(+).)" -cutpoint_closed 1 -out:file:silent guc_guc_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+rna_denovo @flags -sequence guc+guc -secstruct "(.(+).)" -cutpoint_closed 1 -out:file:silent guc_guc_chainbreak0.01_RPT.out -rna_lores_chainbreak_weight 0.01
+

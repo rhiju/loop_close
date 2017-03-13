@@ -1,0 +1,27 @@
+# bulge tests
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed 1 -out:file:silent gc_gac_chainbreak0.01.out -rna_lores_chainbreak_weight 0.01
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed 3 -out:file:silent gc_gac_cutpoint3_chainbreak0.01.out -rna_lores_chainbreak_weight 0.01
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed 4 -out:file:silent gc_gac_cutpoint4_chainbreak0.01.out -rna_lores_chainbreak_weight 0.01
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed 1 -out:file:silent gc_gac_chainbreak0.1.out -rna_lores_chainbreak_weight 0.1
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed 3 -out:file:silent gc_gac_cutpoint3_chainbreak0.1.out -rna_lores_chainbreak_weight 0.1
+
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed 1 -out:file:silent gc_gac_chainbreak0.5.out
+#rna_denovo @flags -sequence gc gc -secstruct "(( ))" -cutpoint_closed 1 -out:file:silent gc_gc.out
+#rna_denovo @flags -sequence gc gaaaac -secstruct "(( )....)" -cutpoint_closed 3 -out:file:silent gc_gaaaac.out
+#rna_denovo @flags -sequence guuuuc -secstruct "(....)" -cutpoint_closed 1 -out:file:silent guuuuc.out
+#rna_denovo @flags -sequence guuuuuuuuuuuuc -secstruct "(............)" -cutpoint_closed 1 -out:file:silent guuuuuuuuuuuc.out
+#rna_denovo @flags -sequence gaacgaaaac -secstruct "(..)(....)" -cutpoint_closed 1 -out:file:silent gaacgaaaac.out
+#rna_denovo @flags -sequence guuuucguuuucguuuucguuuuc -secstruct "(....()....()....()....)" -cutpoint_closed 1 -out:file:silent guuuucguuuucguuuucguuuuc.out
+
+
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed A:1 -out:file:silent gc_gac_chainbreak0.01_RPT.out -rna_lores_chainbreak_weight 0.01
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed B:1 -out:file:silent gc_gac_cutpoint3_chainbreak0.01_RPT.out -rna_lores_chainbreak_weight 0.01
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed B:2 -out:file:silent gc_gac_cutpoint4_chainbreak0.01_RPT.out -rna_lores_chainbreak_weight 0.01
+
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed A:1 -out:file:silent gc_gac_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed B:1 -out:file:silent gc_gac_cutpoint3_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed B:2 -out:file:silent gc_gac_cutpoint4_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+
+#rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed A:1 -out:file:silent gc_gac_chainbreak0.0001_RPT.out -rna_lores_chainbreak_weight 0.0001
+rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed B:1 -out:file:silent gc_gac_cutpoint3_chainbreak0.0001_RPT.out -rna_lores_chainbreak_weight 0.0001
+rna_denovo @flags -sequence gc gac -secstruct "(( ).)" -cutpoint_closed B:2 -out:file:silent gc_gac_cutpoint4_chainbreak0.0001_RPT.out -rna_lores_chainbreak_weight 0.0001

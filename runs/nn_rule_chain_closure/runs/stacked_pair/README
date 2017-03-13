@@ -1,0 +1,8 @@
+# bulge tests
+#rna_denovo @flags -sequence gc gc -secstruct "(( ))" -cutpoint_closed 1 -out:file:silent gc_gc_chainbreak0.01.out -rna_lores_chainbreak_weight 0.01
+#rna_denovo @flags -sequence gc gc -secstruct "(( ))" -cutpoint_closed 1 -out:file:silent gc_gc_chainbreak0.01_RPT.out -rna_lores_chainbreak_weight 0.01
+#rna_denovo @flags -sequence gc gc -secstruct "(( ))" -cutpoint_closed 1 -out:file:silent gc_gc_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence gc gc -secstruct "(( ))" -cutpoint_closed 1 -out:file:silent gc_gc_chainbreak0.0001.out -rna_lores_chainbreak_weight 0.0001
+rna_denovo @flags -sequence gc gc -secstruct "(( ))" -cutpoint_closed 1 -out:file:silent gc_gc_chainbreak0.0001_RPT.out -rna_lores_chainbreak_weight 0.0001
+#rna_denovo @flags -sequence gc gc -secstruct "(( ))" -cutpoint_closed 1 -out:file:silent gc_gc_chainbreak0.0.out -rna_lores_chainbreak_weight 0.0
+

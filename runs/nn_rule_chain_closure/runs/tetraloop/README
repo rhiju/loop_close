@@ -1,0 +1,7 @@
+# tetraloop tests
+#rna_denovo @flags -sequence guuuuc -secstruct "(....)" -cutpoint_closed 1 -out:file:silent guuuuc_chainbreak0.001.out -rna_lores_chainbreak_weight 0.001
+#rna_denovo @flags -sequence guuuuc -secstruct "(....)" -cutpoint_closed 1 -out:file:silent guuuuc_chainbreak0.01.out -rna_lores_chainbreak_weight 0.01
+#rna_denovo @flags -sequence guuuuc -secstruct "(....)" -cutpoint_closed 1 -out:file:silent guuuuc_chainbreak0.1.out -rna_lores_chainbreak_weight 0.1
+
+rna_denovo @flags -sequence guuuuc -secstruct "(....)" -cutpoint_closed 1 -out:file:silent guuuuc_chainbreak0.001_RPT.out -rna_lores_chainbreak_weight 0.001
+rna_denovo @flags -sequence guuuuc -secstruct "(....)" -cutpoint_closed 1 -out:file:silent guuuuc_chainbreak0.01_RPT.out -rna_lores_chainbreak_weight 0.01

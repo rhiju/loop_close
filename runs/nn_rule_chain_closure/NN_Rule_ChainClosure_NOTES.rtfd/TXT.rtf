@@ -1,0 +1,261 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf810
+{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fmodern\fcharset0 Courier-Bold;\f2\fswiss\fcharset0 Helvetica;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red255\green0\blue0;
+\red255\green255\blue51;}
+{\*\expandedcolortbl;;\csgray\c0;\csgray\c100000;\csgenericrgb\c100000\c0\c0;
+\csgenericrgb\c100000\c100000\c20000;}
+\margl1440\margr1440\vieww15620\viewh16360\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs30 \cf0 \ul \ulc0 Remaining TO DO (Nov. 12, 2016):\ulnone \
+[ ] repeat calls with \ul VDW on\ulnone , and save VDW & chain break separately (use RECCES binary outputter?). May be important for multi-helix junctions\
+[ ] Calc [Mean exp(E_VDW/kT)](open)/[Mean exp(E_VDW/kT)](closed) to estimate steric influence.\
+[ ] use SimulatedTempering to get better convergence \'97 alternative to 10-round monte carlo in FragmentMonteCarlo.\
+[ ] run way more topologies.\
+[ ] do alternative C_eff calculation with no cutpoints, but allowing one base-pair to open. Will need coordinate constraints for that.
+\fs24 \
+\
+\ul Nov. 10-11, 2016\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \ulnone {{\NeXTGraphic Screen Shot 2016-11-08 at 5.47.20 PM.png \width5500 \height4380
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+Most of the time base is flipped in (though I see fluctuations out)\
+\
+Getting about 2-20 M \'97 same answer independent of cut point!\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 6.05.25 PM.png \width5620 \height5880
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 6.05.37 PM.png \width5680 \height5860
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 6.18.33 PM.png \width5680 \height5940
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+[Tried to turn on higher chain break weight:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 7.59.28 PM.png \width5820 \height5920
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 7.59.43 PM.png \width5840 \height5940
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+wow first run goes way off the mark \'97 kinetic trap?\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 ]\
+\
+\
+So: deltaG[bulge]  = 4.09 - 0.606 * log( 2.0 M / 1 M ) = 3.67 kcal/mol\
+\
+\
+\ul stacked_pair\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone {{\NeXTGraphic Screen Shot 2016-11-08 at 6.21.22 PM.png \width5360 \height3080
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Note that we get the same answer for stacked_pair! \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 6.19.44 PM.png \width5680 \height5940
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+C_eff ~ 2 M. WRONG. FOUND BUG\
+\
+From 0.01 run\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs22 \cf2 \cb3 \CocoaLigature0 protocols.moves.TrialCounter:           frag 1 trials= 900192;  accepts= 0.9527;  energy_drop/trial=  -0.00002\
+protocols.moves.TrialCounter:      jump_change trials=  99808;  accepts= 0.9816;  energy_drop/trial=   0.00015
+\fs24 \cf0 \CocoaLigature1 \
+\
+From 0.0001 run:\
+
+\fs22 \cf2 \CocoaLigature0 protocols.moves.TrialCounter:           frag 1 trials= 899750;  accepts= 0.9915;  energy_drop/trial=   0.00001\
+protocols.moves.TrialCounter:      jump_change trials= 100250;  accepts= 0.9967;  energy_drop/trial=  -0.00005
+\fs24 \cf0 \CocoaLigature1 \
+\
+Looks like my first 0.01 run was stuck in kinetic trap \'96 RPT gives higher value:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 7.47.37 PM.png \width5960 \height5900
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Also had a bug in my script (it was overriding assumed chainbreak_weight. Duh.):\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 7.53.34 PM.png \width5860 \height5920
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 7.53.54 PM.png \width5720 \height5880
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2016-11-08 at 8.00.52 PM.png \width5860 \height5880
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Getting 2-10 x 10^3 M\
+\
+I need much longer runs \'97 and \ul probably do need simulated tempering to get out of kinetic traps.\ulnone \
+If we use the high end of the estimate, we get:\
+4.09 -0.606 * log( 10e3 ) =  -1.4915 kcal/mol\
+for a stacked pair. Not bad, actually.\
+\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic singlebp_gc.png \width6360 \height4960
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic twoway_gc_gc.png \width6140 \height6020
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic bulge_a.png \width6320 \height5980
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic triloop.png \width6180 \height5900
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic tetraloop.png \width6440 \height5560
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic pentaloop.png \width6280 \height5800
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic decaloop.png \width6600 \height6220
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic two_way_uuu_uuu.png \width6380 \height6540
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic two_way_uu_uuuu.png \width6240 \height6420
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic two_way_u_uuuuu.png \width6320 \height6360
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic two_way_x_uuuuuu.png \width6280 \height6240
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic bulge_u.png \width6100 \height5800
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic bulge_uu.png \width6280 \height5860
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic bulge_uuu.png \width6360 \height6000
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic two_way_u_u.png \width6280 \height6260
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic three_way_u_u_u.png \width6320 \height6160
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic four_way_u_u_u_u.png \width6360 \height6860
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic five_way_u_u_u_u_u.png \width6480 \height6780
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic six_way_u_u_u_u_u_u.png \width6360 \height6700
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs38 \cf4 \cb5 \ul NOTE\ulnone : ALL OF THE FOLLOWING ARE TOO HIGH BY 400-fold. BECAUSE I DIDN\'92T ZERO-CENTER THE O3\'92-P-O5\'92 triad (XYZ.txt)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \cb3 \
+analyze_chainbreak( '../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.001_RPT.SCORES.txt', 0.001 );\
+analyze_chainbreak( '../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.01.SCORES.txt', 0.01 );\
+analyze_chainbreak( '../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.01_RPT.SCORES.txt', 0.01 );\
+\
+C(eff) ../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.001.SCORES.txt:  0.265101 M \
+C(eff) ../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.001_RPT.SCORES.txt:  0.115717 M \
+C(eff) ../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.01.SCORES.txt:  0.818074 M \
+C(eff) ../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.01_RPT.SCORES.txt:  1.351063 M \
+>> analyze_chainbreak_script\
+C(eff)         ../runs/stacked_pair/gc_gc_chainbreak0.01.SCORES.txt: 20.100595 M \
+C(eff)     ../runs/stacked_pair/gc_gc_chainbreak0.01_RPT.SCORES.txt: 5419.220950 M \
+C(eff)        ../runs/stacked_pair/gc_gc_chainbreak0.001.SCORES.txt: 9569.737107 M \
+C(eff)    ../runs/stacked_pair/gc_gc_chainbreak0.001_RPT.SCORES.txt: 2186.908872 M \
+C(eff)       ../runs/stacked_pair/gc_gc_chainbreak0.0001.SCORES.txt: 13.410118 M \
+C(eff)   ../runs/stacked_pair/gc_gc_chainbreak0.0001_RPT.SCORES.txt: 4224.555449 M \
+\
+C(eff)                ../runs/bulge/gc_gac_chainbreak0.1.SCORES.txt: 757.247221 M \
+C(eff)      ../runs/bulge/gc_gac_cutpoint3_chainbreak0.1.SCORES.txt: 69.363765 M \
+C(eff)               ../runs/bulge/gc_gac_chainbreak0.01.SCORES.txt:  3.736660 M \
+C(eff)     ../runs/bulge/gc_gac_cutpoint3_chainbreak0.01.SCORES.txt: 38.194024 M \
+C(eff)     ../runs/bulge/gc_gac_cutpoint4_chainbreak0.01.SCORES.txt: 21.961424 M \
+\
+C(eff)             ../runs/triloop/guuuc_chainbreak0.001.SCORES.txt:  0.294882 M \
+C(eff)         ../runs/triloop/guuuc_chainbreak0.001_RPT.SCORES.txt:  0.370346 M \
+C(eff)              ../runs/triloop/guuuc_chainbreak0.01.SCORES.txt:  0.799784 M \
+C(eff)          ../runs/triloop/guuuc_chainbreak0.01_RPT.SCORES.txt:  0.408375 M \
+C(eff)               ../runs/triloop/guuuc_chainbreak0.1.SCORES.txt: 10.076470 M \
+\
+C(eff)          ../runs/tetraloop/guuuuc_chainbreak0.001.SCORES.txt:  0.488806 M \
+C(eff)      ../runs/tetraloop/guuuuc_chainbreak0.001_RPT.SCORES.txt:  0.148445 M \
+C(eff)           ../runs/tetraloop/guuuuc_chainbreak0.01.SCORES.txt:  1.450323 M \
+C(eff)       ../runs/tetraloop/guuuuc_chainbreak0.01_RPT.SCORES.txt:  1.280446 M \
+C(eff)            ../runs/tetraloop/guuuuc_chainbreak0.1.SCORES.txt: 24.991897 M \
+\
+C(eff)         ../runs/pentaloop/guuuuuc_chainbreak0.001.SCORES.txt:  0.244949 M \
+C(eff)     ../runs/pentaloop/guuuuuc_chainbreak0.001_RPT.SCORES.txt:  0.398444 M \
+C(eff)    ../runs/pentaloop/guuuuuc_chainbreak0.001_RPT2.SCORES.txt:  0.294847 M \
+C(eff)          ../runs/pentaloop/guuuuuc_chainbreak0.01.SCORES.txt:  1.548277 M \
+C(eff)           ../runs/pentaloop/guuuuuc_chainbreak0.1.SCORES.txt: 14.639723 M \
+\
+C(eff)     ../runs/decaloop/guuuuuuuuuuc_chainbreak0.001.SCORES.txt:  0.068007 M \
+C(eff) ../runs/decaloop/guuuuuuuuuuc_chainbreak0.001_RPT.SCORES.txt:  0.123614 M \
+C(eff) ../runs/decaloop/guuuuuuuuuuc_chainbreak0.001_RPT2.SCORES.txt:  0.228074 M \
+C(eff)      ../runs/decaloop/guuuuuuuuuuc_chainbreak0.01.SCORES.txt:  0.887496 M \
+C(eff)       ../runs/decaloop/guuuuuuuuuuc_chainbreak0.1.SCORES.txt: 28.489612 M \
+\
+C(eff)       ../runs/two_way/guuuc_guuuc_chainbreak0.001.SCORES.txt:  3.897240 M \
+C(eff)   ../runs/two_way/guuuc_guuuc_chainbreak0.001_RPT.SCORES.txt:  1.272395 M \
+C(eff)       ../runs/two_way/guuc_guuuuc_chainbreak0.001.SCORES.txt:  0.283563 M \
+C(eff)   ../runs/two_way/guuc_guuuuc_chainbreak0.001_RPT.SCORES.txt:  0.606822 M \
+C(eff)       ../runs/two_way/guc_guuuuuc_chainbreak0.001.SCORES.txt:  0.091259 M \
+C(eff)   ../runs/two_way/guc_guuuuuc_chainbreak0.001_RPT.SCORES.txt:  0.380388 M \
+C(eff)       ../runs/two_way/gc_guuuuuuc_chainbreak0.001.SCORES.txt:  0.188561 M \
+C(eff)   ../runs/two_way/gc_guuuuuuc_chainbreak0.001_RPT.SCORES.txt:  0.103352 M \
+\
+C(eff)           ../runs/two_way/guc_guc_chainbreak0.001.SCORES.txt: 12.845838 M \
+C(eff)       ../runs/two_way/guc_guc_chainbreak0.001_RPT.SCORES.txt: 61.138562 M \
+C(eff)            ../runs/two_way/guc_guc_chainbreak0.01.SCORES.txt: 504.591214 M \
+C(eff)        ../runs/two_way/guc_guc_chainbreak0.01_RPT.SCORES.txt: 342.631661 M \
+\
+C(eff)     ../runs/three_way/guc_guc_guc_chainbreak0.001.SCORES.txt:  0.147206 M \
+C(eff) ../runs/three_way/guc_guc_guc_chainbreak0.001_RPT.SCORES.txt:  0.141576 M \
+C(eff)      ../runs/three_way/guc_guc_guc_chainbreak0.01.SCORES.txt:  0.314864 M \
+C(eff)  ../runs/three_way/guc_guc_guc_chainbreak0.01_RPT.SCORES.txt:  0.403610 M \
+\
+C(eff)  ../runs/four_way/guc_guc_guc_guc_chainbreak0.001.SCORES.txt:  3.438419 M \
+C(eff) ../runs/four_way/guc_guc_guc_guc_chainbreak0.001_RPT.SCORES.txt:  4.680015 M \
+C(eff)   ../runs/four_way/guc_guc_guc_guc_chainbreak0.01.SCORES.txt:  6.192666 M \
+C(eff) ../runs/four_way/guc_guc_guc_guc_chainbreak0.01_RPT.SCORES.txt:  5.127130 M \
+\
+C(eff) ../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.001.SCORES.txt:  0.265101 M \
+C(eff) ../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.001_RPT.SCORES.txt:  0.115717 M \
+C(eff) ../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.01.SCORES.txt:  0.818074 M \
+C(eff) ../runs/five_way/guc_guc_guc_guc_guc_chainbreak0.01_RPT.SCORES.txt:  0.815670 M \
+\
+C(eff) ../runs/six_way/guc_guc_guc_guc_guc_guc_chainbreak0.001.SCORES.txt:  0.726702 M \
+C(eff) ../runs/six_way/guc_guc_guc_guc_guc_guc_chainbreak0.001_RPT.SCORES.txt:  1.454485 M \
+C(eff) ../runs/six_way/guc_guc_guc_guc_guc_guc_chainbreak0.01.SCORES.txt:  3.076583 M \
+C(eff) ../runs/six_way/guc_guc_guc_guc_guc_guc_chainbreak0.01_RPT.SCORES.txt:  1.035727 M \
+C(eff) ../runs/six_way/guc_guc_guc_guc_guc_guc_chainbreak0.1.SCORES.txt: 37.317101 M \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \cb3 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs38 \cf4 \cb5 \ul \ulc4 NOTE\ulnone : ALL OF THE FOLLOWING ARE TOO HIGH BY 400-fold. BECAUSE I DIDN\'92T ZERO-CENTER THE O3\'92-P-O5\'92 triad (XYZ.txt)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \cb3 Flash slide showing full correlation:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f2 \cf0 {{\NeXTGraphic Screen Shot 2016-11-11 at 3.13.14 PM.png \width14220 \height11020
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf0 \
+\
+\
+TODO:\
+\'95\'a0sterics \'97> check 3WJ, 4WJ.\
+\
+\
+\
+\
+}
