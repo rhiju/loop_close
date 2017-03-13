@@ -17,11 +17,11 @@ for i = 1:Nexpt
     col_end = strfind( scorefile, '.SCORES.txt' );
     cols = strsplit( scorefile( col_start:col_end-1 ), '_' );
     chainbreak_weights(i) = str2double( cols{1} );
-    fprintf( 'Reading in scorefile %s with assumed chainbreak weights %f\n', scorefile, chainbreak_weights(i) );
+    %fprintf( 'Reading in scorefile %s with assumed chainbreak weights %f\n', scorefile, chainbreak_weights(i) );
     data{i} = load( scorefile );
     scores = data{i}(:,3);
     % this is pretty cryptic -- should directly output RMSDs instead of weighted scores!
-    rmsd{i} = sqrt( scores/chainbreak_weights(i) ); Nvals = length( rmsd );
+    rmsd{i} = sqrt( scores/chainbreak_weights(i)/3 ); Nvals = length( rmsd );
 end
 
 delx = 0.1;
@@ -29,7 +29,8 @@ x = [0:delx:100];
 % WHAM
 for i = 1:Nexpt
     c(:,i) = hist( rmsd{i}, x ) / length( rmsd ) / delx; % dp/dr.
-    w(:,i) = exp( -chainbreak_weights(i) * x.^2 );
+    if ( chainbreak_weights(i) > 0.005 ) c(:,i) = c(:,i)*0.005/chainbreak_weights(i); end;
+    w(:,i) = exp( -3 * chainbreak_weights(i) * x.^2 );
 end
 
 
@@ -48,7 +49,6 @@ for iter = 1:100
 end
 fprintf( 'Ran WHAM on (x,y,z) for %d iterations\n', iter );
 
-clf;
 get_effective_molarity_chainbreak( x, f, filetag );
 hold on; plot( x, (c./w) * diag(1./z) ); hold off
 

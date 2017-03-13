@@ -1,4 +1,4 @@
-function make_6D_plots( T, maxpt, dirname )
+function C_eff = make_6D_plots( T, maxpt, dirname )
 
 if ~exist( 'dirname','var') dirname = './'; end;
 
@@ -9,7 +9,7 @@ plot_6d_hist_projxyz( T, 7 );
 expfig( [dirname,'projxyz_contours.png'] );
 
 figure(2)
-clf; plot_6d_hist_rotvector( T, maxpt, 4);
+clf; C_eff = plot_6d_hist_rotvector( T, maxpt, 4);
 expfig( [dirname, 'rotvec_contours.png'] );
 
 figure(3)

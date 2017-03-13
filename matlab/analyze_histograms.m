@@ -1,4 +1,4 @@
-function T = analyze_histograms( dirname )
+function [T,C_eff] = analyze_histograms( dirname )
 % T = analyze_histograms( dirname )
 % 
 %  dirname = directory with HISTOGRAM.bin.gz file (default = current
@@ -32,6 +32,7 @@ for i = 1:length( dirnames )
     json_info = T.json;
 end
 
+C_eff = 0.0;
 if length( dirnames ) > 1
     T = run_wham( h, bias_strength, bias_xyz, json_info );
     figure(4);
@@ -40,7 +41,7 @@ if length( dirnames ) > 1
     title( 'Derived 6D potential (projection at z=0, vz=0)' )
     expfig( 'proj4d_potential.pdf' );
 else
-    make_6D_plots( T, [0,0,0,0,0,0], dirname );
+    C_eff = make_6D_plots( T, [0,0,0,0,0,0], dirname );
 end
 
 

@@ -18,15 +18,16 @@ analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint4_chainbreak0.01.SCORES.txt', 
 fprintf('\n');
 
 % rerun, march 2017
-analyze_chainbreak( '../runs/bulge/gc_gac_chainbreak0.01_RPT.SCORES.txt', 0.01 );
-analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint3_chainbreak0.01_RPT.SCORES.txt', 0.01 );
-analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint4_chainbreak0.01_RPT.SCORES.txt', 0.01 );
-analyze_chainbreak( '../runs/bulge/gc_gac_chainbreak0.001_RPT.SCORES.txt', 0.001 );
-analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint3_chainbreak0.001_RPT.SCORES.txt', 0.001 );
-analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint4_chainbreak0.001_RPT.SCORES.txt', 0.001 );
-analyze_chainbreak( '../runs/bulge/gc_gac_chainbreak0.0001_RPT.SCORES.txt', 0.0001 );
-analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint3_chainbreak0.0001_RPT.SCORES.txt', 0.0001 );
-analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint4_chainbreak0.0001_RPT.SCORES.txt', 0.0001 );
+delx = 0.1;
+analyze_chainbreak( '../runs/bulge/gc_gac_chainbreak0.01_RPT.SCORES.txt', 0.01 ,delx);
+analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint3_chainbreak0.01_RPT.SCORES.txt', 0.01 ,delx);
+analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint4_chainbreak0.01_RPT.SCORES.txt', 0.01 ,delx);
+analyze_chainbreak( '../runs/bulge/gc_gac_chainbreak0.001_RPT.SCORES.txt', 0.001 ,delx);
+analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint3_chainbreak0.001_RPT.SCORES.txt', 0.001 ,delx);
+analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint4_chainbreak0.001_RPT.SCORES.txt', 0.001 ,delx);
+analyze_chainbreak( '../runs/bulge/gc_gac_chainbreak0.0001_RPT.SCORES.txt', 0.0001 ,delx);
+analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint3_chainbreak0.0001_RPT.SCORES.txt', 0.0001 ,delx);
+analyze_chainbreak( '../runs/bulge/gc_gac_cutpoint4_chainbreak0.0001_RPT.SCORES.txt', 0.0001 ,delx);
 fprintf('\n');
 
 analyze_chainbreak( '../runs/triloop/guuuc_chainbreak0.001.SCORES.txt', 0.001 );

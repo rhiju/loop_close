@@ -1,4 +1,4 @@
-function plot_6d_hist_rotvector( T, xyzval, N_contours )
+function C_eff = plot_6d_hist_rotvector( T, xyzval, N_contours )
 % T = 6D tensor output by RNA_FragmentMonteCarlo,
 %      as read into MATLAB with read_tensor.
 % xyzval = x,y,z position from which to draw rotation vector distributions
@@ -42,6 +42,7 @@ V = sqrt( VX.^2 + VY.^2 + VZ.^2 )*(pi/180.0);
 % Cr_no_sinc = Cr/(1/(8*pi^2));
 uniform_rot_density = (1/(8*pi^2)) * (sinc(V/2/pi)).^2;
 Cr = Cr./uniform_rot_density;
+C_eff = max(Cr(:));
 if length( xyzval ) == 3 
     fprintf( 'Effective molarity (at most favored rotation): %f M\n', max(Cr(:)) );
 else
@@ -49,7 +50,8 @@ else
     vxb = interp1( vxbins, 1:h_size(4), xyzval(4), 'nearest' );
     vyb = interp1( vybins, 1:h_size(5), xyzval(5), 'nearest' );
     vzb = interp1( vzbins, 1:h_size(6), xyzval(6), 'nearest' );
-    fprintf( 'Effective molarity (at rotation %f, %f, %f): %f M\n', xyzval(4:6),Cr(vxb,vyb,vzb));    
+    fprintf( 'Effective molarity (at rotation %f, %f, %f): %f M\n', xyzval(4:6),Cr(vxb,vyb,vzb));  
+    C_eff = Cr(vxb,vyb,vzb);
 end
 
 % draw it -- note the permute is to ensure x and y aren't MATLAB-flipped.
