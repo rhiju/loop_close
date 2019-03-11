@@ -8,3 +8,4 @@
 -native 2r8s_RNA.pdb
 -secstruct_file 2r8s.secstruct
 -binary_output
+-mute core.scoring.electron_density basic.io.database

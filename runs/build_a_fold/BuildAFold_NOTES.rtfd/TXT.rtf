@@ -1,9 +1,11 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
 {\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-BoldItalic;
-\f3\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;}
-{\*\expandedcolortbl;;\csgray\c0;\csgray\c100000;}
-\margl1440\margr1440\vieww18500\viewh14680\viewkind0
+\f3\fswiss\fcharset0 Helvetica;\f4\fnil\fcharset0 Menlo-Italic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red159\green160\blue28;
+\red47\green180\blue29;}
+{\*\expandedcolortbl;;\csgray\c0;\csgray\c100000;\cssrgb\c68468\c68012\c14208;
+\cssrgb\c20238\c73898\c14947;}
+\margl1440\margr1440\vieww19400\viewh26960\viewkind0
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
 \f0\b\fs22 \cf2 \cb3 \CocoaLigature0 Build-a-fold\
@@ -12,7 +14,7 @@
 
 \f2\i\b Trying to see if we could start with secondary structure and a few tertiary motifs and then rapidly guess the rest.\
 
-\f1\i0\b0 \
+\f1\i0\b0 Would motivate developing a super-fast 2D->3D pipeline based on convolutions, C_eff, etc., likely outside Rosetta. \
 \
 Premise: We can use 6D loop_close in rna_denovo to explore quickly through Monte Carlo. If that looks good, we\'92ll be highly motivated to move into larger RNAs\
 \
@@ -20,7 +22,11 @@ March 11, 2019\
 \ul /Users/rhiju/DropBox/projects/RNA/loop_close/runs/build_a_fold/p4p6/p5a_I_II\
 \
 \ulnone First just build P5aI and P5aII \'97 two helices around a bulged U. Just use the native helices for now, and later can generalize to base pair steps\'85\
-Took quite a bit of iteration to get this to run \'97 so many fold-tree issues, working_res, etc. But in the end:\
+\
+Took quite a bit of iteration to get this to run \'97 so many fold-tree issues, working_res, etc. \
+[eventually got a hint from my runs in /Users/rhiju/DropBox/projects/RNA/recces_test/bulge/bulge_C_eff/runs_denovo_RPT]\
+\
+But in the end:\
 \
 rna_denovo @flags -lores_scorefxn loop_close.wts -s P5aI_2r8s_RNA.pdb P5aII_2r8s_RNA.pdb -working_res 127-129 131-134 189-195 -out:file:silent P5a_I_II_justhelix_loopclose.out  -cycles 10000 -superimpose_over_all\
 \
@@ -28,7 +34,8 @@ yes, looks good. except superimpose does not see to be working. =(\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f3\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2019-03-11 at 10.21.38 AM.png \width6060 \height6660
-}¬}
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
 \f1\fs22 \cf2 \cb3 \CocoaLigature0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf2 \
@@ -58,20 +65,101 @@ rna_denovo @flags  -s Arich_P4I_2r8s_RNA.pdb P4II_2r8s_RNA.pdb -working_res 107-
 \
 With straight up rna_denovo, full rna_lores.wts, get reasonable stuff (left) \'97 although some of the runs produce bizarrely incorrect cutpoint variants (right), which are visible during macboincgraphics. \
 \
-Something to be revisited later \'97 could  simply involve the delC209 inducing an edge case \'97 otherwise this could be a major bug in how cutpoints are placed at input chunks.\
-\
+Something to be revisited later \'97 could  simply involve the delC209 inducing an edge case \'97 
+\f0\b otherwise this could be a major bug in how cutpoints are placed at input chunks.\
+
+\f1\b0 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f3\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2019-03-11 at 10.54.59 AM.png \width7920 \height8760
 }¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic Screen Shot 2019-03-11 at 10.55.04 AM.png \width8180 \height8680
-}¬}\
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
 \
+Had to debug virtual residue compatibility with 6Dloopclose. Eventually got it to work:\
+\
+rna_denovo @flags -lores_scorefxn loop_close.wts -s Arich_P4I_2r8s_RNA.pdb P4II_2r8s_RNA.pdb -working_res 107-110 112 183-184 208 211-214 -out:file:silent Arich_P4I_II_justhelix_loopclose.out -cycles 10000  -virtual_anchor 107 112  -allow_jump_in_numbering\
+\
+\
+Lowest 3 energy models our of 10 looks OK \'96 the C108-G112 pair is \'91floating\'92 where it should be\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-03-11 at 11.30.21 AM.png \width8220 \height7000
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Still a bit discouraging that after 10,000 cycles only 3 of 10 look OK \'97 others have weird poses.\
 \
 To get 6Dloopclose working with docking, had to adjust some stuff in RNA_DeNovoSetup to appropriately handle virtual residue addition to full_model_info() and secstruct. \
 \
+Some good news \'97 got master compelled on my machine, along with the hot fix above (
+\f1\fs22 \cf4 \cb3 \CocoaLigature0 9adf70e845565fd49e52a0b16c94d84564fd5179
+\f3\fs24 \cf0 \cb1 \CocoaLigature1 ). Branch is now:\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
 \f1\fs22 \cf2 \cb3 \CocoaLigature0 \
+* \cf5 \cb3 rhiju/build_a_fold\cf2 \cb3 \
+\
+(was previously on Aug-Jul 2018 branch, rhiju/fix_derivs_lknonpolar_stackelec)\
+\
+The variants looks find in bioncgraphics, and runs converge fine:\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f3\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2019-03-11 at 2.39.51 PM.png \width6280 \height5260
+}¬}
+\f1\fs22 \cf2 \cb3 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \
+Sent a note to Andy about cutpoint variants:\
+i am running `rna_denovo` and seeing a lot of runs with misplaced cutpoint variants (visible as these long white lines in `boincgraphics`). have you seen those?  this is based on a branch that went off master on july 9.  i'm worried that this was a bug that ended up in your FARFAR2 runs.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f3\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2019-03-11 at 11.54.15 AM.png \width8240 \height9540
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Hmm, with latest master and 
+\i disabling
+\i0  -allow_jump_in_numbering, this actually looks OK:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-03-11 at 2.42.44 PM.png \width5440 \height5940
+}¬}\
+\
+though now I see a warning: 
+\f1\fs22 \cf2 \cb3 \CocoaLigature0 core.scoring.electron_density.ElectronDensity: 
+\f0\b [ WARNING ]
+\f1\b0  No density map specified\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 core.scoring.electron_density.ElectronDensity: Loading Density Map
+\f3\fs24 \cf0 \cb1 \CocoaLigature1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \cb3 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \
 \ul /Users/rhiju/DropBox/projects/RNA/loop_close/runs/build_a_fold/p4p6/p4p5p5a\
+\
+\ulnone again, took some debugging, but i think i have runs going with classic 
+\f4\i denovo
+\f1\i0 , and the docking with loop close.\
+\
+rna_denovo @flags @chunk_flags  -working_res 107-138 180-208 210-214 -out:file:silent P4P5P5a_denovo.out -cycles 100000 -allow_jump_in_numbering \
+\ul \
+\ulnone rna_denovo @flags @chunk_flags -lores_scorefxn loop_close.wts -working_res 107-110 112 116-121 127-129 131-138 180-184 187 189-195 200-205 208 211-214 -out:file:silent  P4P5P5a_justhelix_loopclose.out -cycles 100000  -virtual_anchor 109 112 119 134  -allow_jump_in_numbering\
+\ul \
+\ulnone Interesting that for loop-close runs I don\'92t need that many chunks.  That\'92s because most of the separate helices and motifs in P5a are still connected on one strand!\
+\
+In fact, if we also choose to assume G111-A210 internal pair in P4 (which arises in 2r8s delC209), we\'92d only have 3 chunks, corresponding exactly to p4, p5, and p5a. The circle is closed by the A183-A184 to P4 A-minor interaction.\
+\
+These runs are taking a while unfortunately \'97 need to get set up on sherlock2.\
+\ul \
+\
+\
+\
+\
 }

@@ -1,10 +1,10 @@
 pdbslice.py 2r8s_RNA.pdb -subset 116-121 200-205 P5_
 pdbslice.py 2r8s_RNA.pdb -subset 127-129 193-195 P5aI_
 pdbslice.py 2r8s_RNA.pdb -subset 131-134 189-192 P5aII_
-pdbslice.py 2r8s_RNA.pdb -subset 136-138 179-189 P5aIII_
+pdbslice.py 2r8s_RNA.pdb -subset 136-138 180-182 P5aIII_
 pdbslice.py 2r8s_RNA.pdb -subset 135 187 P5a_UAhandle_
 pdbslice.py 2r8s_RNA.pdb -subset 107-110 183-184 211-214 Arich_P4I_
 pdbslice.py 2r8s_RNA.pdb -subset 112 208 P4II_
-
-pdbslice.py 2r8s_RNA.pdb -subset 127-134 189-195 P5a_I_II_
+pdbslice.py 2r8s_RNA.pdb -subset 107-110 183-184 211-214 Arich_P4I_
+pdbslice.py 2r8s_RNA.pdb -subset 107-138 179-208 210-214 P4P5P5a_
 
