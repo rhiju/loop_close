@@ -1,5 +1,5 @@
-function T = run_wham( h, bias_strength, bias_xyz, json );
-% T = run_wham( h, bias_strength, bias_xyz );
+function [T, C_eff] = run_wham( h, bias_strength, bias_xyz, json, test_point );
+% [T, C_eff] = run_wham( h, bias_strength, bias_xyz );
 %
 % See analyze_histograms.m for how to get set up to run this command.
 %
@@ -11,13 +11,18 @@ function T = run_wham( h, bias_strength, bias_xyz, json );
 % bias_strength = weight on harmonic bias, (1, Nexpt)
 % bias_xyz      = target vector for harmonic bias, (3, Nexpt)
 % json          = .json struct from read_tensor of histogram file
-%
+% test_point = (x,y,z,vx,vy,vz) at which to make 3D projection plots and
+%                  estimate C_eff (effective concentration). 
+%               Give 3 vals (x,y,z) if you only know that. (C_eff will go
+%                to max over vx,vy,vz)
+%               Give empty set or nothing, and C_eff will be calculatd at
+%                 max.
 % OUTPUT
 %  T = 6D tensor with final probability distribution (and json as field)
 %
 % (C) Rhiju Das, Stanford University
-
-assert( length( size( h ) ) == 7 );
+if ~exist( 'test_point' ) test_point = []; end;
+%assert( length( size( h ) ) == 7 );
 h_size = size( h );
 Nexpt = size( h, 7 );
 
@@ -35,14 +40,14 @@ for i = 1:Nexpt
           (Y - bias_xyz(2,i)).^2 + ...
           (Z - bias_xyz(3,i)).^2 ) );
 end
+wxyz = max(wxyz, 1.0e-30 );
 w = reshape( wxyz, [prod(h_size(1:3)), Nexpt] );
-
 % probability distribution
 f = zeros( size( w, 1 ), 1 );
 % normalization constants
 z = ones( Nexpt, 1 );
 
-for iter = 1:100
+for iter = 1:1000
     f = squeeze( sum( c, 2 ) )./( w * z );
     f = f/sum(f);
     z_prev = z;
@@ -65,8 +70,7 @@ w_full = repmat( wxyz, [1 1 1 h_size(4:6) 1] );
 w = reshape( w_full, [prod(h_size(1:6)), Nexpt ] );
 f = squeeze( sum( c, 2 ) )./( w * z );
 f = reshape( f, h_size(1:6) );
-
 T.tensor = f/sum(f(:));
 T.json   = json;
-
-make_6D_plots( T, maxpt );
+if isempty( test_point ); test_point = maxpt; end;
+C_eff = make_6D_plots( T, test_point );

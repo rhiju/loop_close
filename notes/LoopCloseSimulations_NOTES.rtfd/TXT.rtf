@@ -1,4 +1,4 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf810
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf820
 {\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier;
 }
 {\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red0\green0\blue255;
@@ -8,7 +8,16 @@
 \margl1440\margr1440\vieww18600\viewh16580\viewkind0
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\fs22 \cf2 \cb3 \ul \ulc2 \CocoaLigature0 /Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/gag\
+\f0\fs22 \cf2 \cb3 \ul \ulc2 \CocoaLigature0 Table of Contents\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \ulnone 1. FARNA simulations to get euler angles \
+2. Rotation vector representation\
+3. WHAM \
+4. Potential fitting, periodic boundary conditions, etc.\
+5. Tests on P5b_connect (success after cubic interpolation!)\
+6. Tests on stepwise benchmarks \ul \
+\
+/Users/rhiju/DropBox/projects/RNA/nn_rule_chain_closure/loop_close/runs/gag\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
 \f1\fs24 \cf0 \cb1 \ulnone \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-01-17 at 2.42.16 PM.png \width6460 \height5520
@@ -648,14 +657,47 @@ Next-step \'96\'a0run RECCES on these conformations, including 6D loop close, bu
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f1\fs24 \cf0 \cb1 \CocoaLigature1 {{\NeXTGraphic Screen Shot 2017-03-02 at 11.45.16 AM.png \width9340 \height7400
-}¬}\
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
 Ran P5b_connect \'97 OMG, this totally works now (purple is polycubic, compared to polylinear (green) and old loop close (cyan):\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic Screen Shot 2017-03-04 at 9.14.41 AM.png \width10420 \height4860
 }¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \cb3 \ul \ulc2 \CocoaLigature0 /Users/rhiju/DropBox/projects/stepwise/benchmark/new/rna_res_level_energy4_6Dloopclose_nosubmotifs/gagua_pentaloop\
+\ulnone /Users/rhiju/DropBox/projects/stepwise/benchmark/Figures/rna_res_level_energy4_RPT11_nosubmotifs_vs_rna_res_level_energy4_6Dloopclose_nosubmotifs.pdf
+\f1\fs24 \cf0 \cb1 \CocoaLigature1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Run on stepwise benchmark. Some issues showing up for UUCG.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 Favortite model involves distinct G\'95U closing pair, and leaving U uninstantiated. Darn!?\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-04-14 at 10.41.47 AM.png \width5980 \height5240
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-04-14 at 10.41.42 AM.png \width6340 \height4800
+}¬}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 GAGUA is different, although we do still recover native. Would help to build in the darn phosphate, even if bulged U remains uninstantiated: GAG
+\b p
+\b0 UA:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-04-14 at 10.41.56 AM.png \width5760 \height5220
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2017-04-14 at 10.44.02 AM.png \width4240 \height3720
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\fs22 \cf2 \cb3 \CocoaLigature0 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf2 \
+\
 }

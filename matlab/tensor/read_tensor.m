@@ -8,6 +8,8 @@ function T = read_tensor( filename )
 %
 % (C) Rhiju Das, Stanford University
 
+filename = strrep(filename,'//','/'); % causing an issue with gunzip
+
 T.tensor = [];
 [filename, json_file, is_gzip, use_binary ] = process_tensor_filename( filename );
 
