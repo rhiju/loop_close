@@ -1,0 +1,5 @@
+pdbslice.py 2r8s_RNA.pdb -subset 107-110 183-184 211-214 Arich_P4I_
+pdbslice.py 2r8s_RNA.pdb -subset 112 208 P4II_
+
+pdbslice.py 2r8s_RNA.pdb -subset  107-112 183-184 208 210-214 Arich_P4I_II_
+

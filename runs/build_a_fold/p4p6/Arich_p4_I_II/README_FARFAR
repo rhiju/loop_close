@@ -1,0 +1,7 @@
+# OK let's try P4 -- check the issue with jump in numbering -- get something crazy with chainbreak...
+#rna_denovo @flags  -s Arich_P4I_2r8s_RNA.pdb P4II_2r8s_RNA.pdb -working_res 107-112 183-184 208 210-214 -out:file:silent Arich_P4I_II_loopclose.out -cycles 10000  -allow_jump_in_numbering # -lores_scorefxn loop_close.wts
+
+rna_denovo @flags -lores_scorefxn loop_close.wts -s Arich_P4I_2r8s_RNA.pdb P4II_2r8s_RNA.pdb -working_res 107-110 112 183-184 208 211-214 -out:file:silent Arich_P4I_II_justhelix_loopclose.out -cycles 10000  -virtual_anchor 107 112  -allow_jump_in_numbering
+
+
+

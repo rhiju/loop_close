@@ -1,0 +1,11 @@
+#rna_denovo @flags -lores_scorefxn loop_close.wts -s P5aI_2r8s_RNA.pdb P5aII_2r8s_RNA.pdb -working_res 127-129 131-134 189-195 -out:file:silent P5a_I_II_justhelix_loopclose.out  -cycles 10000 -superimpose_over_all
+
+# let's see if we can get docking to work 
+#rna_denovo @flags -lores_scorefxn loop_close.wts -s P5aI_2r8s_RNA.pdb P5aII_2r8s_RNA.pdb -working_res 127-129 131-134 189-195 -out:file:silent P5a_I_II_justhelix_loopclose_DOCK.out  -cycles 10000 -superimpose_over_all -cutpoint_open 192 -virtual_anchor 128 133
+
+# OK let's try P4 -- check the issue with jump in numbering -- get something crazy with chainbreak...
+#rna_denovo @flags -lores_scorefxn loop_close.wts -s Arich_P4I_2r8s_RNA.pdb P4II_2r8s_RNA.pdb -working_res 107-112 183-184 208 210-214 -out:file:silent P4_II_loopclose.out -cycles 10000  -allow_jump_in_numbering
+rna_denovo @flags -lores_scorefxn loop_close.wts -s Arich_P4I_2r8s_RNA.pdb P4II_2r8s_RNA.pdb -working_res 107-110 112 183-184 208 211-214 -out:file:silent P4_II_justhelix_loopclose.out -cycles 10000  -virtual_anchor 112   -allow_jump_in_numbering
+
+
+

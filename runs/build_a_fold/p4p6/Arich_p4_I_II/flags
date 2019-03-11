@@ -1,0 +1,10 @@
+-temperature 1.0
+-close_loops false
+-minimize_rna false
+-no_filters
+-nstruct 10
+-rna:denovo:rounds 1
+-fasta 2r8s.fasta
+-native 2r8s_RNA.pdb
+-secstruct_file 2r8s.secstruct
+-binary_output
