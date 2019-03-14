@@ -2,7 +2,7 @@
 -close_loops false
 -minimize_rna false
 -no_filters
--nstruct 10
+-nstruct 50
 -rna:denovo:rounds 1
 -fasta 2r8s.fasta
 -native 2r8s_RNA.pdb

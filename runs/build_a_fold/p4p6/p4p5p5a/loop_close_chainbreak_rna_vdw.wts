@@ -1,0 +1,4 @@
+loop_close 1.0
+LOOP_CLOSE_USE_6D_POTENTIAL                # models orientation dependence in loop_close implicit potential for RNA
+chainbreak 1.0
+rna_vdw 1.0

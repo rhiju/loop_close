@@ -1,7 +1,12 @@
 #rna_denovo @flags @chunk_flags  -working_res 107-138 180-208 210-214 -out:file:silent P4P5P5a_denovo.out -cycles 100000
 
-rna_denovo @flags @chunk_flags -lores_scorefxn loop_close.wts -working_res 107-112 116-121 127-129 131-138 180-184 187 189-195 200-205 208 210-214 -out:file:silent  P4P5P5a_justhelix_loopclose.out -cycles 100000  -virtual_anchor 110 119 134
+#rna_denovo @flags @chunk_flags -lores_scorefxn loop_close.wts -working_res 107-112 116-121 127-129 131-138 180-184 187 189-195 200-205 208 210-214 -out:file:silent  P4P5P5a_justhelix_loopclose.out -cycles 100000  -virtual_anchor 110 119 134
 #-allow_jump_in_numbering
 
+#rna_denovo @flags @chunk_flags -lores_scorefxn loop_close_chainbreak.wts -working_res 107-112 116-121 127-129 131-138 180-184 187 189-195 200-205 208 210-214 -out:file:silent  P4P5P5a_justhelix_loopclose_chainbreak.out -cycles 100000  -virtual_anchor 110 119 134
+
+#rna_denovo @flags @chunk_flags -lores_scorefxn loop_close_chainbreak_rna_vdw.wts -working_res 107-112 116-121 127-129 131-138 180-184 187 189-195 200-205 208 210-214 -out:file:silent  P4P5P5a_justhelix_loopclose_chainbreak_rnavdw.out -cycles 100000  -virtual_anchor 110 119 134
+
+rna_denovo @flags @chunk_flags -lores_scorefxn loop_close_1D_chainbreak_rna_vdw.wts -working_res 107-112 116-121 127-129 131-138 180-184 187 189-195 200-205 208 210-214 -out:file:silent  P4P5P5a_justhelix_loopclose1D_chainbreak_rnavdw.out -cycles 100000  -virtual_anchor 110 119 134
 
 
